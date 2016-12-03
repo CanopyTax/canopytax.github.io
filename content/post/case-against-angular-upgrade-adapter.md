@@ -2,7 +2,7 @@
 author = "joel"
 title = "A case against Angular Upgrade Adapter"
 draft = false
-date = "2016-12-03T08:05:03-07:00"
+date = "2016-09-16T08:05:03-07:00"
 
 +++
 
@@ -112,3 +112,6 @@ directives.
 The docs for single-spa are [located
 here](https://github.com/CanopyTax/single-spa/tree/master/docs), let us know
 what you think!
+
+*Originally posted at
+[https://medium.com/@joeldenning/a-case-against-angular-update-adapter-d4e121282a11](https://medium.com/@joeldenning/a-case-against-angular-update-adapter-d4e121282a11)*

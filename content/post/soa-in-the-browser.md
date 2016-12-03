@@ -2,7 +2,7 @@
 author = "bret"
 title = "A Case for SOA in the Browser"
 draft = false
-date = "2016-12-03T08:05:03-07:00"
+date = "2016-02-26T08:05:03-07:00"
 
 +++
 
@@ -130,3 +130,4 @@ benefit from service oriented architecture.
 
 *Read more about how to get started with sofe at: [https://github.com/CanopyTax/sofe](https://github.com/CanopyTax/sofe)*
 
+*Originally posted at [https://medium.com/@blittle/a-case-for-soa-in-the-browser-f777a9f139b2](https://medium.com/@blittle/a-case-for-soa-in-the-browser-f777a9f139b2)*
