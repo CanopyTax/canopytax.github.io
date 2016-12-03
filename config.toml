@@ -1,7 +1,7 @@
 baseurl = "http://tech.canopytax.com/"
 title = "Canopy Tech"
 languageCode = "en-us"
-Copyright = "All rights reserved - 2015"
+Copyright = "All rights reserved - 2016"
 canonifyurls = true
 theme="casper"
 disqusShortname = "canopy-tech"
