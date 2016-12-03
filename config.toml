@@ -1,0 +1,28 @@
+baseurl = "http://tech.canopytax.com/"
+title = "Canopy Tech"
+languageCode = "en-us"
+Copyright = "All rights reserved - 2015"
+canonifyurls = true
+theme="casper"
+disqusShortname = "canopy-tech"
+
+[params]
+cover = "images/cover.png"
+
+[[menu.main]]
+  name = "Canopy Tech"
+  weight = -120
+  identifier = "blog"
+  url = "/"
+
+[[menu.main]]
+  name = "Github"
+  weight = -110
+  identifier = "opensource"
+  url = "https://github.com/canopytax"
+
+[[menu.main]]
+  name = "Jobs"
+  weight = -110
+  identifier = "jobs"
+  url = "https://boards.greenhouse.io/canopy"
