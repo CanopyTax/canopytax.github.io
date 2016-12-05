@@ -884,7 +884,7 @@ body.nav-opened .menu-button .word {
 .page-title span {
 	position: relative;
 	top: -28px;
-	padding-left:30px;
+	margin-left:30px;
 }
 
 .page-description {
@@ -1515,7 +1515,7 @@ body:not(.post-template) .post-title {
 
     .page-title span {
 			top: -13px;
-			padding-left: 16px;
+			margin-left: 16px;
     }
 
     .page-description {
@@ -1726,7 +1726,7 @@ body:not(.post-template) .post-title {
 
 		.page-title span {
 			top: -6px;
-			padding-left:8px;
+			margin-left:8px;
 		}
 
 
@@ -2095,11 +2095,8 @@ figcaption {
 	position: relative;
 	height: 0;
 	top: -92px;
-	left:0;
+	left: 40px;
 	z-index:10000;
-	width: 80%;
-	max-width: 710px;
-	margin: 0 auto;
 }
 
 .headerImage {
@@ -2116,7 +2113,7 @@ figcaption {
 	font-weight: bold;
 	position: absolute;
 	left: 160px;
-	top: -7px;
+	top: -8px;
 }
 
 .coverLogo {
