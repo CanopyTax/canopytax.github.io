@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Canopy Tech</title>
-    <link>https://fantastic-channel.surge.sh/index.xml</link>
+    <link>https://canopytax.github.io/index.xml</link>
     <description>Recent content on Canopy Tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2016</copyright>
     <lastBuildDate>Fri, 16 Sep 2016 08:05:03 -0700</lastBuildDate>
-    <atom:link href="https://fantastic-channel.surge.sh/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://canopytax.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>A case against Angular Upgrade Adapter</title>
-      <link>https://fantastic-channel.surge.sh/post/case-against-angular-upgrade-adapter/</link>
+      <link>https://canopytax.github.io/post/case-against-angular-upgrade-adapter/</link>
       <pubDate>Fri, 16 Sep 2016 08:05:03 -0700</pubDate>
       
-      <guid>https://fantastic-channel.surge.sh/post/case-against-angular-upgrade-adapter/</guid>
+      <guid>https://canopytax.github.io/post/case-against-angular-upgrade-adapter/</guid>
       <description>
 
 &lt;p&gt;If you’re hoping to migrate your Angular 1 application to Angular 2, you’re
@@ -156,10 +156,10 @@ what you think!&lt;/p&gt;
     
     <item>
       <title>A Case for SOA in the Browser</title>
-      <link>https://fantastic-channel.surge.sh/post/soa-in-the-browser/</link>
+      <link>https://canopytax.github.io/post/soa-in-the-browser/</link>
       <pubDate>Fri, 26 Feb 2016 08:05:03 -0700</pubDate>
       
-      <guid>https://fantastic-channel.surge.sh/post/soa-in-the-browser/</guid>
+      <guid>https://canopytax.github.io/post/soa-in-the-browser/</guid>
       <description>
 
 &lt;p&gt;So you are a web-developer. You write a lot of JavaScript. You have a large
