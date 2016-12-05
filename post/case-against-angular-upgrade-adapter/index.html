@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+
+
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="A case against Angular Upgrade Adapter"/>
+<meta name="twitter:description" content="If you’re hoping to migrate your Angular 1 application to Angular 2, you’re going to hear about the Angular Upgrade Adapter, which let’s you run ng1 and ng2 apps side by side.
+It’s not that Angular Upgrade Adapter is bad or poorly written or doesn’t work. And it’s not the Typescript or the Angular 2 or the SystemJS.
+But here are two reasons that will make you think twice about using Angular Upgrade Adapter:"/>
+
+
+
+  	<meta property="og:title" content=" A case against Angular Upgrade Adapter &middot;  Canopy Tech" />
+  	<meta property="og:site_name" content="Canopy Tech" />
+  	<meta property="og:url" content="https://fantastic-channel.surge.sh/post/case-against-angular-upgrade-adapter/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2016-09-16T08:05:03-07:00" />
+
+    
+    
+
+    <title>
+       A case against Angular Upgrade Adapter &middot;  Canopy Tech
+    </title>
+
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="icon" href="https://fantastic-channel.surge.sh/images/favicon-16.png" sizes="16x16">
+		<link rel="icon" href="https://fantastic-channel.surge.sh/images/favicon-32.png" sizes="32x32">
+		<link rel="icon" href="https://fantastic-channel.surge.sh/images/favicon-48.png" sizes="48x48">
+		<link rel="icon" href="https://fantastic-channel.surge.sh/images/favicon-64.png" sizes="64x64">
+		<link rel="icon" href="https://fantastic-channel.surge.sh/images/favicon-128.png" sizes="128x128">
+	  <link rel="apple-touch-icon" href="https://fantastic-channel.surge.sh/images/favicon-128.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://fantastic-channel.surge.sh/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://fantastic-channel.surge.sh/css/nav.css" />
+		<link rel='stylesheet' id='font-asap-css'  href='https://fonts.googleapis.com/css?family=Asap%3A400%2C400i%2C700%2C700i&#038;ver=1.0.0' type='text/css' media='all' />
+
+
+    
+      
+          <link href="https://fantastic-channel.surge.sh/index.xml" rel="alternate" type="application/rss+xml" title="Canopy Tech" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.17" />
+
+    <link rel="canonical" href="https://fantastic-channel.surge.sh/post/case-against-angular-upgrade-adapter/" />
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="https://fantastic-channel.surge.sh/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="https://fantastic-channel.surge.sh/index.xml">&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+<div style="width: 100%;">
+	<div class="headerWrapper">
+		<a class="headerImage" href="https://fantastic-channel.surge.sh/">
+			<img src="https://fantastic-channel.surge.sh/images/header--logo.svg"/>
+			<span>tech</span>
+		</a>
+	</div>
+</div>
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">A case against Angular Upgrade Adapter</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2016-09-16T08:05:03-07:00">
+            Sep 16, 2016
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<p>If you’re hoping to migrate your Angular 1 application to Angular 2, you’re
+going to hear about the <a href="https://angular.io/docs/ts/latest/guide/upgrade.html">Angular Upgrade
+Adapter</a>, which let’s you
+run ng1 and ng2 apps side by side.</p>
+
+<p>It’s not that Angular Upgrade Adapter is bad or poorly written or doesn’t work.
+And it’s not the Typescript or the Angular 2 or the SystemJS.</p>
+
+<p>But here are two reasons that will make you think twice about using Angular
+Upgrade Adapter:</p>
+
+<h3 id="1-you-ll-still-have-to-rewrite-everything">1. You’ll still have to rewrite everything</h3>
+
+<p><img src="https://cdn-images-1.medium.com/max/800/1*VhuRgvrW6GijrjEpZtqnxA.gif" alt="" /></p>
+
+<p>This comic strip is a real story, and I am the Dilbert. One time at Amazon I
+made a joke to my product manager. It was about rewriting code. He didn’t laugh.
+Then I joked about how he didn’t think it was funny. Still nothing. Then I
+walked away.</p>
+
+<h3 id="2-you-ll-probably-have-to-do-this-again-anyways">2. You’ll probably have to do this again, anyways</h3>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I think I&#39;ve had milk last longer than some JavaScript frameworks.</p>&mdash; I Am Devloper (@iamdevloper) <a href="https://twitter.com/iamdevloper/status/540481335362875392">December 4, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Developers are just machines that consume Twitter and produce frameworks. And,
+really, I wouldn’t have it any other way. Trying out a new framework is just too
+fun to give up. And when <em>I’m</em> not the one pushing for us to try out the new
+shiny, somebody else is. Even if we have that big meeting where we talk for an
+hour and a half and everyone agrees that Angular 2 is the “framework we decided
+on”, it won’t last.</p>
+
+<h3 id="so-is-this-just-how-new-frameworks-are">So is this just how new frameworks are?</h3>
+
+<p>For a long time I thought the solution to the “framework problem” was staying on
+top of everything. If I migrate early to beta versions and release candidates,
+somehow that makes my inability to switch frameworks okay. Another thing I
+thought was that if I could just find the <em>right framework</em> that we’d be happy.
+Or that somehow we could cure ourselves of the desire to switch frameworks.</p>
+
+<p>Turns out that’s just not true. And once I accepted that, I realized it’s
+totally okay!</p>
+
+<h3 id="let-s-get-meta">Let’s get meta.</h3>
+
+<p>I think it’s time for the Javascript community to get meta with frameworks.
+Instead of finding the <em>right</em> framework and hoping that it works out, what if
+we were capable of simultaneously using any number of frameworks?</p>
+
+<p>What if we had a bring-your-own-framework mentality where multiple apps
+cooperate within one SPA? A framework for using frameworks.</p>
+
+<p>A Javascript metaframework.</p>
+
+<p>Where I work this is what we’ve been trying to figure out. What would something
+like this even mean? Could we start each project as a green field instead of
+locked-in to our previous technology decisions? How do we pull it off?</p>
+
+<h3 id="a-different-approach">A different approach</h3>
+
+<p>What we’ve come up with is a project called
+<a href="https://github.com/CanopyTax/single-spa">single-spa</a> and so far we love it.
+It’s an alternative to upgrade guides and migration tools. An early entry to the
+nascent world of “Javascript metaframeworks.”</p>
+
+<p>Instead of migrating your large Angular 1 application to Angular 2, single-spa
+has you split it up into several small applications that coexist in the same
+SPA. Once split up, you can tackle each one of the applications individually.
+When Angular 2 makes sense, migrate one of the apps to be Angular 2. If React
+makes sense, rewrite one of them in React.</p>
+
+<p>Or if you don’t want to rewrite anything at all, just let your application
+remain while still giving yourself the option to try something else for new
+projects.</p>
+
+
+<figure >
+    
+        <img src="https://cdn-images-1.medium.com/max/800/1*jiiG-Dxyk6OmVCy2EOtLCA.png" />
+    
+    
+</figure>
+
+
+<p>The benefit is that your approach is framework-agnostic. When you want to try
+out a new framework, you have a way to do so. Compare this to Angular Upgrade
+Adapter, which is a one-way door that leads to Angular 2. What do you do when
+you want to try out React or something else?</p>
+
+<p>What single-spa is doing is managing your applications for you. You can think of
+it like a framework agnostic router on top of all other applications. It manages
+which applications are active and which ones are dormant.</p>
+
+<h3 id="how-to-try-it-out">How to try it out</h3>
+
+<p>Single-spa works with es5, es6+, typescript, webpack, systemjs, gulp, grunt,
+bower, or really any build system you can think of. You can npm install it, jspm
+install it, or even just use a script tag if you prefer. It works in Chrome,
+Firefox, Safari, Edge, and (at least) IE11.</p>
+
+<p>To give it a shot, you’ll have to <a href="https://github.com/CanopyTax/single-spa/blob/master/docs/migrating-existing-spas.md">migrate your
+SPA</a>
+to become a single-spa child application. After you do so, the entry file to
+your application will look something like this:</p>
+
+
+<figure >
+    
+        <img src="https://cdn-images-1.medium.com/max/800/1*YNZMoyijJown_nOBrQ0wxA.png" alt=" " />
+    
+    
+    <figcaption>
+        <p>
+         
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+
+
+<p>Once you’ve added a file like this to your app, you’re ready! You can keep your
+existing ui-router configuration and your ng1 controllers, services, and
+directives.</p>
+
+<p>The docs for single-spa are <a href="https://github.com/CanopyTax/single-spa/tree/master/docs">located
+here</a>, let us know
+what you think!</p>
+
+<p><em>Originally posted at
+<a href="https://medium.com/@joeldenning/a-case-against-angular-update-adapter-d4e121282a11">https://medium.com/@joeldenning/a-case-against-angular-update-adapter-d4e121282a11</a></em></p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="https://fantastic-channel.surge.sh/">Joel Denning</a></h4>
+  
+  <p>Canopy JavaScript enthusiast</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Lehi, UT</span>
+    <span class="author-link icon-link"><a href="https://twitter.com/Joelbdenning">https://twitter.com/Joelbdenning</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=A%20case%20against%20Angular%20Upgrade%20Adapter&nbsp;-&nbsp;Canopy%20Tech&amp;url=https%3a%2f%2ffantastic-channel.surge.sh%2fpost%2fcase-against-angular-upgrade-adapter%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ffantastic-channel.surge.sh%2fpost%2fcase-against-angular-upgrade-adapter%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ffantastic-channel.surge.sh%2fpost%2fcase-against-angular-upgrade-adapter%2f&amp;description=A%20case%20against%20Angular%20Upgrade%20Adapter"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ffantastic-channel.surge.sh%2fpost%2fcase-against-angular-upgrade-adapter%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'canopy-tech';
+  var disqus_url = 'https:\/\/fantastic-channel.surge.sh\/post\/case-against-angular-upgrade-adapter\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Canopy Tech</a> All rights reserved - 2016</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://fantastic-channel.surge.sh/js/jquery.js"></script>
+    <script type="text/javascript" src="https://fantastic-channel.surge.sh/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://fantastic-channel.surge.sh/js/index.js"></script>
+    
+</body>
+</html>
+
