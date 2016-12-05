@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+
+
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="PDF2SVG the right way"/>
+<meta name="twitter:description" content="The Issue with PDF&rsquo;s: There are a lot of reasons you might be looking to convert PDF files to SVG. At canopy, we needed to be able to convert high resolution PDF&rsquo;s into a format which we could display as previews inside our document management services. These documents might come from any source, so the need to replicate them 1:1 is critical. There is already a variety of solutions out there, but none of which encapsulated solutions to all of the problems we had with them."/>
+
+
+
+  	<meta property="og:title" content=" PDF2SVG the right way &middot;  Canopy Tech" />
+  	<meta property="og:site_name" content="Canopy Tech" />
+  	<meta property="og:url" content="https://canopytax.github.io/post/pdf2svg-the-right-way/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2016-12-05T08:05:03-07:00" />
+
+    
+    
+
+    <title>
+       PDF2SVG the right way &middot;  Canopy Tech
+    </title>
+
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="icon" href="https://canopytax.github.io/images/favicon-16.png" sizes="16x16">
+		<link rel="icon" href="https://canopytax.github.io/images/favicon-32.png" sizes="32x32">
+		<link rel="icon" href="https://canopytax.github.io/images/favicon-48.png" sizes="48x48">
+		<link rel="icon" href="https://canopytax.github.io/images/favicon-64.png" sizes="64x64">
+		<link rel="icon" href="https://canopytax.github.io/images/favicon-128.png" sizes="128x128">
+	  <link rel="apple-touch-icon" href="https://canopytax.github.io/images/favicon-128.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://canopytax.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://canopytax.github.io/css/nav.css" />
+		<link rel='stylesheet' id='font-asap-css'  href='https://fonts.googleapis.com/css?family=Asap%3A400%2C400i%2C700%2C700i&#038;ver=1.0.0' type='text/css' media='all' />
+
+
+    
+      
+          <link href="https://canopytax.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Canopy Tech" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.17" />
+
+    <link rel="canonical" href="https://canopytax.github.io/post/pdf2svg-the-right-way/" />
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="https://canopytax.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="https://canopytax.github.io/index.xml">&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+<div style="width: 100%;">
+	<div class="headerWrapper">
+		<a class="headerImage" href="https://canopytax.github.io/">
+			<img src="https://canopytax.github.io/images/header--logo.svg"/>
+			<span>tech</span>
+		</a>
+	</div>
+</div>
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">PDF2SVG the right way</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2016-12-05T08:05:03-07:00">
+            Dec 5, 2016
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h2 id="the-issue-with-pdf-s">The Issue with PDF&rsquo;s:</h2>
+
+<p>There are a lot of reasons you might be looking to convert PDF files to SVG. At canopy, we needed to be able to convert high resolution PDF&rsquo;s into a format which we could display as previews inside our document management services. These documents might come from any source, so the need to replicate them 1:1 is critical. There is already a variety of solutions out there, but none of which encapsulated solutions to all of the problems we had with them.</p>
+
+<p>PDS&rsquo;s are complex documents with Fonts, Vector Graphics, and Raster Graphics.</p>
+
+<h3 id="fonts">Fonts:</h3>
+
+<p>PDF&rsquo;s may have fonts embedded inside of them. This can cause an issue with rendering. If the fonts does not exist in the users system, then the SVG is not going to be reproduced in the same way that the PDF was. Solution? Our first solution is to reference the font in the system. That way if the user has the font, then the SVG will render properly. This should work in the majority of cases, since we can assume the SVG is likely to be viewed by the person who created the document, and since we are an accounting company, we don&rsquo;t assume that our users are going to be picking too many fonts that are not standard.</p>
+
+<p>The future solution might be to take the fonts from the PDF and embed them right into the SVG themselves, but until that requirement comes, we are happy with the fonts the way they are.</p>
+
+<h3 id="vector-graphics">Vector Graphics:</h3>
+
+<p>This was our primary reason for using SVG for our preview files. SVG maintains vector data, keeping the files a fraction of the size of their rasterized counterparts. Not to mention the infinite level of quality we get to maintain with them.</p>
+
+<h3 id="raster-graphics">Raster Graphics:</h3>
+
+<p>About the only setback to SVG&rsquo;s is embedded raster images because we do not apply any additional compression to them, however, in the future, if it becomes a problem we probably can compress during the conversion process.</p>
+
+<h2 id="extracting-fonts">Extracting Fonts</h2>
+
+<p>In our testing, we were able to find a way to extract fonts from PDF&rsquo;s in order to later use them for re-embedding into the SVG&rsquo;s. Here is an example of what you might use to extract fonts from a PDF.</p>
+
+<pre><code class="language-python">from pdfrw import PdfReader
+from pprint import pprint
+x = PdfReader(path_to_file)
+import zlib
+import os
+
+def flate_decode(obj):
+    stream = obj.stream.encode('Latin-1')
+    decompressobj = zlib.decompressobj
+    dco = decompressobj()
+    return dco.decompress(stream)
+
+filters = {
+    '/FlateDecode': flate_decode
+}
+
+def save_font(filter, font, name):
+    if not os.path.exists(path + name):
+        with open(path + name, &quot;wb&quot;) as text_file:
+            pprint('savind: '+name, indent=2)
+            text_file.write(filters[filter](font))
+
+for page in x.pages:
+    if page.Resources.Font is not None:
+        for resource, value in page.Resources.Font.items():
+            d = value.FontDescriptor
+            if d is not None and d.FontFile is not None:
+                save_font(d.FontFile.Filter, d.FontFile, d.FontName)
+            if d is not None and d.FontFile2 is not None:
+                save_font(d.FontFile2.Filter, d.FontFile2, d.FontName + '.ttf')
+            if d is not None and d.FontFile3 is not None:
+                if d.FontFile3.Subtype == '/Type1C':
+                    print('TODO: Handle Type1C: '+d.FontName)
+                if d.FontFile3.Subtype == '/CIDFontType0C':
+                    print('TODO: Handle CIDFontType0C')
+                if d.FontFile3.Subtype == '/OpenType':
+                    save_font(d.FontFile2.Filter, d.FontFile2, d.FontName + '.otf')
+
+</code></pre>
+
+<h2 id="binaries">Binaries</h2>
+
+<p>Someday I would really like to write my own converter, if ever I am feeling up to the task. For now I have tried a variety of them and they all have their issues.</p>
+
+<p>The main converter that everyone seems to use is <a href="http://www.cityinthesky.co.uk/opensource/pdf2svg/">PDF2SVG</a>. It&rsquo;s really simple under the hood. It uses <a href="https://poppler.freedesktop.org/">poppler</a> and <a href="https://www.cairographics.org/">cairo</a>. One is used for parsing the PDF and the other for creating SVGs. The problem with this one comes when we attempt to convert complex PDFs. If you don&rsquo;t care about 1:1 replication, this is a fine option.</p>
+
+<p>There are also a variety of proprietary options but none of them were ideal for our needs. Also a lot of paid services were using poppler/cairo or just PDF2SVG anyways, and got the same kind of results we were getting. We wanted better.</p>
+
+<h2 id="inkscape">Inkscape</h2>
+
+<p>In the end we found Inkscape to be the best solution. In fact this was the first converter we found, but we were unhappy with the fact that (as of the time of writing this) you can only convert one page of a PDF at a time. Just the first page. Not helpful. But we were able so use <a href="https://github.com/pmaupin/pdfrw">pdfrw</a> to iterate over all the pages, outputting one page at a time. This actually seems to be about as fast as PDF2SVG, and the results are FANTASTIC. So long as the font exists on the system the PDF was originated from, the SVG was indistinguishable.</p>
+
+<pre><code class="language-py">for i, p in enumerate(doc.pages):
+  PdfWriter().addpage(p).write(pdf_path)
+  command = ['inkscape', '--without-gui', '--file=%s' % pdf_path,
+            '--export-plain-svg=%s' % svg_path]
+  create = asyncio.create_subprocess_exec(*command)
+  proc = await create
+  await proc.wait()
+</code></pre>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="https://canopytax.github.io/">Skyler Lewis</a></h4>
+  
+  <p>Canopy Pythonista/DevOps</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Lehi, UT</span>
+    <span class="author-link icon-link"><a href="https://twitter.com/alairock">https://twitter.com/alairock</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=PDF2SVG%20the%20right%20way&nbsp;-&nbsp;Canopy%20Tech&amp;url=https%3a%2f%2fcanopytax.github.io%2fpost%2fpdf2svg-the-right-way%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcanopytax.github.io%2fpost%2fpdf2svg-the-right-way%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fcanopytax.github.io%2fpost%2fpdf2svg-the-right-way%2f&amp;description=PDF2SVG%20the%20right%20way"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fcanopytax.github.io%2fpost%2fpdf2svg-the-right-way%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'canopy-tech';
+  var disqus_url = 'https:\/\/canopytax.github.io\/post\/pdf2svg-the-right-way\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Canopy Tech</a> All rights reserved - 2016</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://canopytax.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://canopytax.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://canopytax.github.io/js/index.js"></script>
+    
+</body>
+</html>
+
