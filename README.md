@@ -5,13 +5,13 @@ Canopy Tech Blog
 The blog is statically built with Hugo. First install Hugo https://gohugo.io/
 
 ### Running the blog
-Run the blog by executing `hugo server`
+Run the blog by executing `cd src && hugo server`
 
 ### Add an author
-If you are a new author to the blog, add a new `author.yml` file. You can copy one of the existing https://github.com/CanopyTax/canopy-tech-blog/blob/master/data/authors/bret.yml
+If you are a new author to the blog, add a new `author.yml` file. You can copy one of the existing https://github.com/CanopyTax/canopytax.github.io/blob/master/src/data/authors/bret.yml
 
 ### Add a post
-Add a new markdown file in https://github.com/CanopyTax/canopy-tech-blog/tree/master/content/post
+Add a new markdown file in https://github.com/CanopyTax/canopytax.github.io/blob/master/src/content/post/soa-in-the-browser.md
 
 Make sure the md file has at the top a header:
 
@@ -31,3 +31,8 @@ Within your post, you can easily include tweets, images, and gists:
 {{< tweet TWEET_ID >}}
 {{< gist GIST_ID >}}
 ```
+
+### Deploying
+
+1. Run `./build.sh`
+1. Commit changes and push to master
