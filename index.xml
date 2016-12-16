@@ -7,8 +7,195 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2016</copyright>
-    <lastBuildDate>Fri, 16 Sep 2016 08:05:03 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 16 Dec 2016 19:32:29 +0000</lastBuildDate>
     <atom:link href="https://canopytax.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A step-by-step guide to single-spa</title>
+      <link>https://canopytax.github.io/post/a-step-by-step-guide-to-single-spa/</link>
+      <pubDate>Fri, 16 Dec 2016 19:32:29 +0000</pubDate>
+      
+      <guid>https://canopytax.github.io/post/a-step-by-step-guide-to-single-spa/</guid>
+      <description>
+
+&lt;p&gt;Running Angular 1, React, Angular 2, and Vue.js side by side sounds pretty cool. And it seems appealing to have multiple applications coexisting on the same page, each lazily loaded.&lt;/p&gt;
+
+&lt;p&gt;But using &lt;a href=&#34;https://github.com/CanopyTax/single-spa&#34;&gt;single-spa&lt;/a&gt; for the first time can be tricky because you’ll come across terms like “application lifecycles”, “root application”, “loading function”, “child application”, and “activity function.”&lt;/p&gt;
+
+&lt;p&gt;This blog post will take you through setting things up and what choices you have when using single-spa. It’s based on what I’ve seen at Canopy Tax where we went from an Angular 1 monolith to an Angular 1, React, and Svelte polyglot.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-one-choose-a-module-loader&#34;&gt;Step One: choose a module loader.&lt;/h3&gt;
+
+&lt;p&gt;Your module loader / bundler is the library you’ll use to lazy load code. I recommend either Webpack or JSPM, if you’re starting from scratch.&lt;/p&gt;
+
+&lt;p&gt;If you go with Webpack, try to use Webpack 2 if you can, since it has &lt;a href=&#34;https://webpack.js.org/guides/migrating/#code-splitting-with-es2015&#34;&gt;support for promise-based lazy loading&lt;/a&gt;. This will make things easier for you later on, since single-spa requires that your &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#loading-function&#34;&gt;loading functions&lt;/a&gt; return promises. If you can’t use Webpack 2, getting single-spa to lazy load your code with Webpack 1 will require some boilerplate code.&lt;/p&gt;
+
+&lt;p&gt;JSPM/SystemJS has worse documentation than Webpack, but is a great solution for module loading if you can get past that. I recommend using jspm@0.17 — it’s still in beta but has been worked on for over a year and at Canopy we find it stable enough to use in production.&lt;/p&gt;
+
+&lt;p&gt;If you’re struggling to decide between the two, then ask yourself the following: Do I want multiple completely separate bundles? If you don’t, I recommend Webpack because it has better docs, a larger community, and fewer gotchas. Otherwise, I’d go with JSPM, since Webpack has no plans to support dynamic runtime loading (See tweet below from Mr. Larkin, himself).&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/Joelbdenning&#34;&gt;@Joelbdenning&lt;/a&gt; &lt;a href=&#34;https://twitter.com/dan_abramov&#34;&gt;@dan_abramov&lt;/a&gt; indeed!! It&amp;#39;s a static bundler! Module loading is something we won&amp;#39;t do :)&lt;/p&gt;&amp;mdash; Sean T. Larkin (@TheLarkInn) &lt;a href=&#34;https://twitter.com/TheLarkInn/status/789968589419745280&#34;&gt;October 22, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;step-two-create-a-brand-new-html-file&#34;&gt;Step Two: create a brand new html file&lt;/h3&gt;
+
+&lt;p&gt;The next step is to create what single-spa calls your “&lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md&#34;&gt;root application&lt;/a&gt;.” Really your root application is just the stuff that initializes single-spa, and it starts with an html file.&lt;/p&gt;
+
+&lt;p&gt;Even if you’ve got an existing project that already has it’s own html file, I recommend starting fresh with a new html file. That way, there is a clear distinction between what is in your root application (shared between all apps) and what is in a child application (not shared with everything).&lt;/p&gt;
+
+&lt;p&gt;You’ll want to keep your root application as small as possible, since it’s sort of the master controller of everything and could become a bottleneck. You don’t want to be constantly changing &lt;em&gt;both&lt;/em&gt; the root application &lt;em&gt;and&lt;/em&gt; the child applications.&lt;/p&gt;
+
+&lt;p&gt;So for now, just have a &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; to a single javascript file (root-application.js), which will be explained in Step Three.&lt;/p&gt;
+
+&lt;p&gt;Since Webpack is probably the more common use case, my code examples from here on will assume that you’re using Webpack 2. The equivalent Webpack 1 or JSPM code has all the same concepts and only some minor code differences.&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;http://gist.github.com/fa2428d1df615387aa763d8b0e29e6c1.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;step-three-register-a-child-application&#34;&gt;Step Three: register a “child application”&lt;/h3&gt;
+
+&lt;p&gt;Now it’s time to finish up your root application by writing your “root-application.js” file. The primary purpose of root-application.js is to call &lt;code&gt;[singleSpa.declareChildApplication(..)](https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#declaring-child-applications)&lt;/code&gt; for each of the applications that will be managed by single-spa.&lt;/p&gt;
+
+&lt;p&gt;If you’re into analogies, you can think of single-spa as the operating system for your single page application, managing which “processes” (or “child applications”) are running at any given time. At any moment, some of the child applications will be active on the DOM and others will not. As the user navigates throughout the app, some applications will be unmounting from the DOM and others will be mounting to the DOM.&lt;/p&gt;
+
+&lt;p&gt;Another way to look at it is that single-spa is a master router on top of your other routers.&lt;/p&gt;
+
+&lt;p&gt;To do this, first &lt;code&gt;npm install single-spa&lt;/code&gt; and then call the &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#declaring-child-applications&#34;&gt;declareChildApplication&lt;/a&gt; function:&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;http://gist.github.com/d72c28eb395665849b5fd311f33272f2.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Because single-spa is &lt;em&gt;so very&lt;/em&gt; cool, we’ve created an app called “cool-app” that will be lazy loaded and mounted to the DOM whenever the url hash starts with &lt;code&gt;#/cool&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;loadCoolApp&lt;/code&gt; function is what single-spa calls a &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#loading-function&#34;&gt;loading function&lt;/a&gt;. Inside of it, the &lt;code&gt;System.import&lt;/code&gt; introduces a code splitting point — Webpack will create separate code chunks that will be lazy loaded by single-spa.&lt;/p&gt;
+
+&lt;p&gt;For your specific project, you probably won’t have a hash prefix of “cool”, but I recommend establishing some kind of convention that makes it easy to determine which apps are active. This will simplify the maintenance of your &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#activity-function&#34;&gt;activity functions&lt;/a&gt;, as you add more and more child applications.&lt;/p&gt;
+
+&lt;p&gt;If you’re going to start out with just one child application, then it might make sense to implement the activity function as&lt;code&gt;() =&amp;gt; true&lt;/code&gt;. You can worry about getting fancier once you have more than one application.&lt;/p&gt;
+
+&lt;p&gt;The last thing is to call &lt;code&gt;start()&lt;/code&gt;. This is something you &lt;strong&gt;must do for things to work.&lt;/strong&gt; The purpose is to give control over timing and performance. But until that is a concern, &lt;code&gt;start&lt;/code&gt; is just one of those things you do, and then maybe &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/single-spa-api.md#start&#34;&gt;read about it&lt;/a&gt; later if you ever need to.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-four-create-app-js-file&#34;&gt;Step Four: create “.app.js” file&lt;/h3&gt;
+
+&lt;p&gt;When you open up your index.html file in the browser, you’ll now see….. a blank screen! We’re really close, but there’s one crucial step left: building your app.js file.&lt;/p&gt;
+
+&lt;p&gt;After that, you’ll have everything working for your first single-spa application.&lt;/p&gt;
+
+&lt;p&gt;An app.js file is a configuration file that you create for each child application. It is the code that is lazy loaded when your activity function returns true.&lt;/p&gt;
+
+&lt;p&gt;There are three things that you need to implement in the app.js file:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;A &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/child-applications.md#bootstrap&#34;&gt;bootstrap lifecycle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/child-applications.md#mount&#34;&gt;mount lifecycle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;An &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/child-applications.md#unmount&#34;&gt;unmount lifecycle&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A “lifecycle” is a function or array of functions that will be called by single-spa; you export these from the app.js file. Each function must return a Promise so that single-spa knows when it is completed.&lt;/p&gt;
+
+&lt;p&gt;Here is a simple example:&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;http://gist.github.com/d96a25991b1e53437c14437fadd32af0.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;At this point, you might be seeing the &lt;code&gt;document.getElementById&lt;/code&gt; and &lt;code&gt;innerHTML =&lt;/code&gt; and worry that you’ve been duped — maybe single-spa is really just a poor excuse for a ui component framework.&lt;/p&gt;
+
+&lt;p&gt;And really, don’t we already have a lot of different ways to write UI components?&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;But getting all of those frameworks to work together.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Using multiple frameworks&lt;/em&gt; is where single-spa really shines. It is not a ui framework itself, but a framework for using other frameworks.&lt;/p&gt;
+
+&lt;p&gt;Each child application can be written in any framework, so long as it implements application lifecycle functions. Then the mini-apps cooperate to form the entire single page application.&lt;/p&gt;
+
+&lt;p&gt;So going back to our previous example, we could choose to write our “cool.app.js” as an Angular 1 app, and choose something else for future apps:&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;http://gist.github.com/d95775208c12b648ebc0e893258ec5be.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;In this example, we use a helper library called &lt;code&gt;single-spa-angular1&lt;/code&gt; which abstracts away the specifics of initializing Angular 1 apps. This blogpost doesn’t show you the &lt;code&gt;app.module.js&lt;/code&gt; or &lt;code&gt;routes.js&lt;/code&gt; files, but you can see an example implementation &lt;a href=&#34;https://github.com/CanopyTax/single-spa-examples/tree/master/src/angular1&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The pattern is to call &lt;code&gt;singleSpaAngular1&lt;/code&gt; at the very beginning, which returns &lt;code&gt;bootstrap&lt;/code&gt;, &lt;code&gt;mount&lt;/code&gt;, and &lt;code&gt;unmount&lt;/code&gt; lifecycle functions for you.&lt;/p&gt;
+
+&lt;p&gt;You might notice that this time the lifecycles are exported as arrays of functions instead of just functions — you can choose whichever works best for you.&lt;/p&gt;
+
+&lt;p&gt;The advantage of exporting an array of functions is that you can add in your own custom behavior (like &lt;code&gt;aboutToBootstrap&lt;/code&gt; and &lt;code&gt;doneBootstrap&lt;/code&gt;) that will run before or after the Angular 1 lifecycles. When you export an array, each item in the array must be a function that returns a promise. Single-spa will wait for each promise to resolve, in order, before calling the next function in the array.&lt;/p&gt;
+
+&lt;p&gt;To learn more about single-spa helper libraries, check out these github projects:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/CanopyTax/single-spa-angular1&#34;&gt;single-spa-angular1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/CanopyTax/single-spa-react&#34;&gt;single-spa-react&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/CanopyTax/single-spa-angular2&#34;&gt;single-spa-angular2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/CanopyTax/single-spa-vue&#34;&gt;single-spa-vue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/CanopyTax/single-spa-svelte&#34;&gt;single-spa-svelte&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/CanopyTax/single-spa-preact&#34;&gt;single-spa-preact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can also see a fully working example of an angular app coexisting with other apps at the &lt;a href=&#34;https://github.com/CanopyTax/single-spa-examples&#34;&gt;single-spa-examples repo&lt;/a&gt; or the &lt;a href=&#34;http://single-spa.surge.sh&#34;&gt;live demo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-five-test-it-out&#34;&gt;Step Five: test it out!&lt;/h3&gt;
+
+&lt;p&gt;Refresh your page and you should now have a functioning single-spa application!&lt;/p&gt;
+
+&lt;p&gt;Try navigating to a url that your child app is active for (&lt;code&gt;#/cool&lt;/code&gt;) and then navigating away from it. When you do so, the page will not refresh but you should see your application mount itself to the DOM and then unmount.&lt;/p&gt;
+
+&lt;p&gt;If you run into problems, try to narrow down whether the problem is in the root application or in the child application. Is your root application being executed? Are the declareChildApplication calls being made? Have you called &lt;code&gt;start()&lt;/code&gt;? Is there a network request to download the code for your child application? Is your child application&amp;rsquo;s&lt;code&gt;bootstrap&lt;/code&gt; lifecycle being called? What about &lt;code&gt;mount&lt;/code&gt;?&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*WMFuo-hz-Q31UVbTHAx4lw.png&#34; alt=&#34;single-spa-architecture&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        single-spa-architecture
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;It may be helpful to add a navigation menu, so you can verify everything mounts and unmounts to the DOM correctly. If you want to level up your single-spa skills even more, make the navigation menu an entire child application whose activity function is &lt;code&gt;() =&amp;gt; true&lt;/code&gt;. An example that does just that is found &lt;a href=&#34;https://github.com/CanopyTax/single-spa-examples/blob/master/src/single-spa-examples.js#L3&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;https://github.com/CanopyTax/single-spa-examples/blob/master/src/navbar/navbar.app.js&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;While you are verifying that everything is working, keep in mind that each application goes through five phases:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*utKlcxBkDXfQAQR52B0hAA.png&#34; alt=&#34;application-lifecycle&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        application-lifecycle
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;As you get your feet wet, you’ll probably run into some (hopefully small) hiccups setting things up. When this tutorial is not enough, there are other resources on &lt;a href=&#34;https://github.com/CanopyTax/single-spa&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Single-spa is still a relatively new thing, and we’d love to hear your feedback and questions. We welcome contributions from everyone.&lt;/p&gt;
+
+&lt;p&gt;If you’re excited about the possibilities, feel free to contact me (twitter &lt;a href=&#34;https://twitter.com/Joelbdenning&#34;&gt;@joelbdenning&lt;/a&gt;). And if you are not excited, then still feel free to contact me, but only after you leave some nasty comments :)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>A case against Angular Upgrade Adapter</title>
