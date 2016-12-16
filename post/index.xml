@@ -7,13 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2016</copyright>
-    <lastBuildDate>Fri, 16 Dec 2016 19:32:29 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Dec 2016 19:54:28 +0000</lastBuildDate>
     <atom:link href="https://canopytax.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>A step-by-step guide to single-spa</title>
       <link>https://canopytax.github.io/post/a-step-by-step-guide-to-single-spa/</link>
-      <pubDate>Fri, 16 Dec 2016 19:32:29 +0000</pubDate>
+      <pubDate>Fri, 16 Dec 2016 19:54:28 +0000</pubDate>
       
       <guid>https://canopytax.github.io/post/a-step-by-step-guide-to-single-spa/</guid>
       <description>
@@ -50,10 +50,9 @@
 
 &lt;p&gt;Since Webpack is probably the more common use case, my code examples from here on will assume that you’re using Webpack 2. The equivalent Webpack 1 or JSPM code has all the same concepts and only some minor code differences.&lt;/p&gt;
 
-&lt;script type=&#34;text/javascript&#34; src=&#34;http://gist.github.com/fa2428d1df615387aa763d8b0e29e6c1.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;script type=&#34;text/javascript&#34; src=&#34;http://gist.github.com/fa2428d1df615387aa763d8b0e29e6c1.js&#34;&gt;&lt;/script&gt;
 
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;br /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;step-three-register-a-child-application&#34;&gt;Step Three: register a “child application”&lt;/h3&gt;
 
@@ -172,12 +171,12 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*utKlcxBkDXfQAQR52B0hAA.png&#34; alt=&#34;application-lifecycle&#34; /&gt;
+        &lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*utKlcxBkDXfQAQR52B0hAA.png&#34; alt=&#34;an-applications-lifecycle&#34; /&gt;
     
     
     &lt;figcaption&gt;
         &lt;p&gt;
-        application-lifecycle
+        an-applications-lifecycle
         
             
         
