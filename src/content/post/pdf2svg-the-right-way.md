@@ -1,7 +1,7 @@
 +++
 author = "skyler"
 title = "PDF2SVG the right way"
-draft = true
+draft = false
 date = "2016-12-05T08:05:03-07:00"
 +++
 
@@ -75,7 +75,7 @@ There are also a variety of proprietary options but none of them were ideal for 
 ## Inkscape
 In the end we found Inkscape to be the best solution. In fact this was the first converter we found, but we were unhappy with the fact that (as of the time of writing this) you can only convert one page of a PDF at a time. Just the first page. Not helpful. But we were able so use [pdfrw](https://github.com/pmaupin/pdfrw) to iterate over all the pages, outputting one page at a time to PDF and then converting that PDF to SVG with an Inkscape running as a subprocess. This actually seems to be about as fast as PDF2SVG, and the results are FANTASTIC. So long as the font exists on the system the PDF was originated from, the SVG was indistinguishable.
 
-```py
+```python
 for i, p in enumerate(doc.pages):
   PdfWriter().addpage(p).write(pdf_path)
   command = ['inkscape', '--without-gui', '--file=%s' % pdf_path,
