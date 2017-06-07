@@ -75,7 +75,7 @@ everyone if working on a single repo. If you go with the monolith you end up get
 5) **Independent Scalability**. Some products simply aren't used nearly to the scale of the major products.
 Having to worry about large scale for products that have small uses is troublesome. On Monoliths, every feature has to be built for your largest scale, since everything is deployed together.
 
-6) **Frequent small deployments**. Large projects lead to big deployments. Big deployments lead to lots of lock-steps and process. Process leads to inrequent deployments. Because services are independently deployable, the deployments are smaller,
+6) **Frequent small deployments**. Large projects lead to big deployments. Big deployments lead to lots of lock-steps and process. Process leads to infrequent deployments. Because services are independently deployable, the deployments are smaller,
 and have less lock-steps. This allows you to deploy frequently. Frequency matters when you want a low turn-around time on 
 fixing bugs/security issues.
 
