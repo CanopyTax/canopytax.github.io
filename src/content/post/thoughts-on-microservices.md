@@ -7,7 +7,7 @@ date = "2017-06-02T02:05:03-07:00"
 +++
 
 
-The programming world moves very quickly compared to other industies. Many things come an go
+The programming world moves very quickly compared to other industries. Many things come an go
 and it can often be hard to keep up with the latest trends. 
 More often then not, it makes sense to not follow common trends, as they are untested, and 
 might fade in a couple years anyways. How do we decide which trends to follow and which 
@@ -37,18 +37,18 @@ SOA, however has created a bad name for itself due to certain patterns such as "
 A microservice is a SOA where each service has a couple restraints imposed upon them.
 
 1) **Smart endpoints and Dumb pipes**. A microservices should have endpoints that can convert a universal contract into objects. A microservice should own its own logic and form its own responses. 
-This is in contridiction of the Enterprise Service Bus, where the bus itself often handles lots of choreography and transformations. It is important that logic be built into the actual service that its for. 
+This is in contradiction of the Enterprise Service Bus, where the bus itself often handles lots of choreography and transformations. It is important that logic be built into the actual service that its for. 
 
-2) **Hard boundries**. Microservices should always talk to each other using a standard protocol, and never using functions/libraries. This protocol is often HTTP. Microservices should never allow other services to reach into their code without going through the defined contract and protocol.
+2) **Hard boundaries**. Microservices should always talk to each other using a standard protocol, and never using functions/libraries. This protocol is often HTTP. Microservices should never allow other services to reach into their code without going through the defined contract and protocol.
 
 3) **Independently Deployable**. A Microservice should be able to be modified, tested, and deployed by itself.
 If services require lock-steps or deploy together as a bundle, that is not a microservice.
 
-4) **Seperation of Data**. A microservice should own its own data. It should never reach into another services database.
+4) **Separation of Data**. A microservice should own its own data. It should never reach into another services database.
 **A database is not a contract**. If multiple services are sharing a database, these are not microservices.
 
 These constraints must be kept in order to truly reap the benefits of microservices. To learn more about microservices,
-feel free to read [Martin Fowlers post](https://www.martinfowler.com/articles/microservices.html), or read the book [Building Microsevices by Sam Newman](https://www.amazon.com/Building-Microservices-Designing-Fine-Grained-Systems/dp/1491950358)
+feel free to read [Martin Fowlers post](https://www.martinfowler.com/articles/microservices.html), or read the book [Building Microservices by Sam Newman](https://www.amazon.com/Building-Microservices-Designing-Fine-Grained-Systems/dp/1491950358)
 
 ## Pros and Cons of Microservices
 
@@ -68,7 +68,7 @@ On a monolith, any change could potentially bring down the entire system.
 
 3) **Enforced Boundaries**. In single repo projects, boundaries are often defined, but are very "theoretical". Breaking the boundaries by having separate code bases prevent people from creating code that crosses several boundaries. It is just too easy to cross boundaries in a single repo, and when people have deadlines, they are likely to cut corners.
 
-4) **Autonomy**. Conways Law says that a software architecture will eventually mirror the organization communication structure.
+4) **Autonomy**. Conway's Law says that a software architecture will eventually mirror the organization communication structure.
 If you want "small blast zones" you have to create Autonomous teams. It is too difficult to create autonomous teams when
 everyone if working on a single repo. If you go with the monolith you end up getting a very hierarchical structure in your organization, as you need certain people/teams to coordinate everything.
 
