@@ -7,8 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2016</copyright>
-    <lastBuildDate>Fri, 16 Dec 2016 19:54:28 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Jun 2017 08:05:03 -0700</lastBuildDate>
     <atom:link href="https://canopytax.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Canopy&#39;s Sponsorship of SystemJS</title>
+      <link>https://canopytax.github.io/post/systemjs-sponsorship/</link>
+      <pubDate>Wed, 07 Jun 2017 08:05:03 -0700</pubDate>
+      
+      <guid>https://canopytax.github.io/post/systemjs-sponsorship/</guid>
+      <description>
+
+&lt;h4 id=&#34;open-source-software&#34;&gt;Open-source Software&lt;/h4&gt;
+
+&lt;p&gt;Canopy is a SaaS product built for tax professionals. Canopy is built upon a variety of open-source technology. When a project is open-source, that means anybody can view, use, modify, and distribute your project for any purpose (&lt;a href=&#34;https://opensource.guide/starting-a-project/&#34;&gt;https://opensource.guide&lt;/a&gt;). Open-source technology is built and maintained by thousands of developers who contribute thousands of volunteer hours. Open-source development is often a difficult and thankless task. The success of most modern software companies is dependent upon a collection of open-source software.&lt;/p&gt;
+
+&lt;h4 id=&#34;sponsorship-of-systemjs&#34;&gt;Sponsorship of SystemJS&lt;/h4&gt;
+
+&lt;p&gt;Because Canopy’s success it built upon open-source software, we should also be financially invested in those who back it. We are pleased to announce that Canopy will immediately begin sponsoring SystemJS. That sponsorship will begin at $200 a month for the first 6 months, after which we will re-evaluate and consider increasing the rate.&lt;/p&gt;
+
+&lt;h4 id=&#34;what-is-systemjs&#34;&gt;What is SystemJS?&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/systemjs/systemjs&#34;&gt;SystemJS&lt;/a&gt; is a dynamic ECMAScript module loader. It allows Canopy to dynamically load code at run-time in the browser using the &lt;a href=&#34;https://github.com/whatwg/loader&#34;&gt;WhatWG loader specification&lt;/a&gt;. This functionality has allowed Canopy to innovate and &lt;a href=&#34;https://github.com/CanopyTax/sofe&#34;&gt;build technology that would be difficult to do otherwise&lt;/a&gt;. SystemJS also allows us to write code according to a standard specification instead of using a non-standard proprietary module format. In addition to providing financial support, we plan to be involved in helping move the project forward in matching the browser module and loader specifications. We hope that our financial backing of open-source will encourage other companies to do the same.&lt;/p&gt;
+
+&lt;h4 id=&#34;we-are-hiring&#34;&gt;We are Hiring&lt;/h4&gt;
+
+&lt;p&gt;Canopy is a firm believer in the the power of open-source and community driven development. In addition to financially backing open software, Canopy hosts meetups, sponsors local events, and authors a variety of open-source projects. Those projects include: &lt;a href=&#34;https://github.com/CanopyTax/single-spa&#34;&gt;single-spa&lt;/a&gt;, &lt;a href=&#34;https://github.com/CanopyTax/sofe&#34;&gt;sofe&lt;/a&gt;, &lt;a href=&#34;https://github.com/CanopyTax/asyncpgsa&#34;&gt;asyncpgsa&lt;/a&gt; and &lt;a href=&#34;https://github.com/CanopyTax&#34;&gt;others&lt;/a&gt;. We are always looking for motivated, passionate, and talented engineers! Checkout our open positions on our &lt;a href=&#34;https://www.canopytax.com/careers/?utm_source=systemjs-blog&#34;&gt;careers&lt;/a&gt; page.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>A step-by-step guide to single-spa</title>
@@ -34,7 +60,7 @@
 
 &lt;p&gt;If you’re struggling to decide between the two, then ask yourself the following: Do I want multiple completely separate bundles? If you don’t, I recommend Webpack because it has better docs, a larger community, and fewer gotchas. Otherwise, I’d go with JSPM, since Webpack has no plans to support dynamic runtime loading (See tweet below from Mr. Larkin, himself).&lt;/p&gt;
 
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/Joelbdenning&#34;&gt;@Joelbdenning&lt;/a&gt; &lt;a href=&#34;https://twitter.com/dan_abramov&#34;&gt;@dan_abramov&lt;/a&gt; indeed!! It&amp;#39;s a static bundler! Module loading is something we won&amp;#39;t do :)&lt;/p&gt;&amp;mdash; Sean T. Larkin (@TheLarkInn) &lt;a href=&#34;https://twitter.com/TheLarkInn/status/789968589419745280&#34;&gt;October 22, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;indeed!! It&amp;#39;s a static bundler! Module loading is something we won&amp;#39;t do :)&lt;/p&gt;&amp;mdash; Sean Larkin (@TheLarkInn) &lt;a href=&#34;https://twitter.com/TheLarkInn/status/789968589419745280&#34;&gt;October 22, 2016&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
 &lt;br /&gt;&lt;/p&gt;
 
