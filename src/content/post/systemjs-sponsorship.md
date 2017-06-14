@@ -2,7 +2,7 @@
 author = "bret"
 title = "Canopy's Sponsorship of SystemJS"
 draft = false
-date = "2017-06-07T08:05:03-07:00"
+date = "2017-06-14T08:05:03-07:00"
 
 +++
 
