@@ -2,7 +2,7 @@
 author = "nhumrich"
 title = "Thoughts to Microservices"
 draft = false
-date = "2017-06-02T02:05:03-07:00"
+date = "2017-06-23T03:03:15-07:00"
 
 +++
 
