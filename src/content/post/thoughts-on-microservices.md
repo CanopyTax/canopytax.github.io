@@ -1,6 +1,6 @@
 +++
 author = "nhumrich"
-title = "Thoughts to Microservices"
+title = "Thoughts on Microservices"
 draft = false
 date = "2017-06-23T03:03:15-07:00"
 
