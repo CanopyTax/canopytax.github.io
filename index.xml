@@ -2,15 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Canopy Tech</title>
-    <link>https://canopytax.github.io/</link>
+    <link>https://canopytax.github.io/index.xml</link>
     <description>Recent content on Canopy Tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2016</copyright>
     <lastBuildDate>Fri, 23 Jun 2017 03:03:15 -0700</lastBuildDate>
-    
-	<atom:link href="https://canopytax.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
+    <atom:link href="https://canopytax.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Thoughts on Microservices</title>
@@ -18,7 +16,147 @@
       <pubDate>Fri, 23 Jun 2017 03:03:15 -0700</pubDate>
       
       <guid>https://canopytax.github.io/post/thoughts-on-microservices/</guid>
-      <description>The programming world moves very quickly compared to other industries. Many things come and go and it can often be hard to keep up with the latest trends. More often than not, it makes sense to not follow common trends, as they are untested, and might fade in a couple years anyways. How do we decide which trends to follow and which to pass on? This is a really hard problem, but can often be decided by digging further into the trend.</description>
+      <description>
+
+&lt;p&gt;The programming world moves very quickly compared to other industries. Many things come and go
+and it can often be hard to keep up with the latest trends.
+More often than not, it makes sense to not follow common trends, as they are untested, and
+might fade in a couple years anyways. How do we decide which trends to follow and which
+to pass on? This is a really hard problem, but can often be decided by digging further into
+the trend. Who is else is doing it? Why? What problems are they trying to solve? What problems
+are created?&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://ssl.gstatic.com/trends_nrtr/1015_RC10/embed_loader.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+trends.embed.renderExploreWidget(&#34;TIMESERIES&#34;, {&#34;comparisonItem&#34;:[{&#34;keyword&#34;:&#34;microservices&#34;,&#34;geo&#34;:&#34;US&#34;,&#34;time&#34;:&#34;2013-06-01 2017-06-02&#34;}],&#34;category&#34;:0,&#34;property&#34;:&#34;&#34;}, {&#34;exploreQuery&#34;:&#34;date=2013-06-01%202017-06-02&amp;geo=US&amp;q=microservices&#34;,&#34;guestPath&#34;:&#34;https://trends.google.com:443/trends/embed/&#34;});
+&lt;/script&gt;
+
+
+&lt;p&gt;Microservices are one of these trends. They have been quite a hot topic for a few years now.
+It might make sense to wait for others to vet microservices before adopting them. After all, based on google search trends, microservices seem to be a relatively new thing in the programming world.
+Despite this, one of the main selling points of microservices is that it&amp;rsquo;s the pattern many large,
+trusted companies (such as Google, Amazon, Microsoft, Facebook, Netflix, Spotify, etc.) follow.
+How do so many companies use microservices if it is so new?
+Turns out &lt;em&gt;microservices&lt;/em&gt; is just a relatively new &lt;strong&gt;term&lt;/strong&gt;. The concept of microservices has actually been around for a while, it just never had an official name. Microservices is actually a subset of Service-oriented Architecture (SOA). SOA, has actually been around for quite some time.&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://ssl.gstatic.com/trends_nrtr/1015_RC10/embed_loader.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+trends.embed.renderExploreWidget(&#34;TIMESERIES&#34;, {&#34;comparisonItem&#34;:[{&#34;keyword&#34;:&#34;/m/0315s4&#34;,&#34;geo&#34;:&#34;US&#34;,&#34;time&#34;:&#34;2004-01-01 2017-06-02&#34;}],&#34;category&#34;:0,&#34;property&#34;:&#34;&#34;}, {&#34;exploreQuery&#34;:&#34;date=all&amp;geo=US&amp;q=%2Fm%2F0315s4&#34;,&#34;guestPath&#34;:&#34;https://trends.google.com:443/trends/embed/&#34;});
+&lt;/script&gt;
+
+
+&lt;p&gt;SOA, however, has created a bad name for itself due to certain patterns which are now considered anti-pattern, such as the &amp;ldquo;Enterprise Service Bus&amp;rdquo;. Thus a term for a specific &amp;ldquo;style&amp;rdquo; of SOA has been created, which is now called &amp;ldquo;microservices&amp;rdquo;. This brings the question, what exactly &lt;strong&gt;is&lt;/strong&gt; a microservice&lt;/p&gt;
+
+&lt;h2 id=&#34;what-is-a-microservice&#34;&gt;What is a Microservice&lt;/h2&gt;
+
+&lt;p&gt;A microservice architecture is a SOA where each service has a couple restraints imposed upon them.&lt;/p&gt;
+
+&lt;p&gt;1) &lt;strong&gt;Smart endpoints and Dumb pipes&lt;/strong&gt;. A microservice should have endpoints that can convert a universal contract into objects. A microservice should own its own logic and form its own responses.
+This is in contradiction of the Enterprise Service Bus, where the bus itself often handles lots of choreography and transformations. It is important that logic be built into the actual service that it&amp;rsquo;s for.&lt;/p&gt;
+
+&lt;p&gt;2) &lt;strong&gt;Hard boundaries&lt;/strong&gt;. Microservices should always talk to each other using a standard protocol, and never using functions/libraries. This protocol is often HTTP. Microservices should never allow other services to reach into their code without going through the defined contract and protocol.&lt;/p&gt;
+
+&lt;p&gt;3) &lt;strong&gt;Independently Deployable&lt;/strong&gt;. A Microservice should be able to be modified, tested, and deployed by itself.
+If services require lock-steps or deploy together as a bundle, that is not a microservice.&lt;/p&gt;
+
+&lt;p&gt;4) &lt;strong&gt;Separation of Data&lt;/strong&gt;. A microservice should own its own data. It should never reach into another service&amp;rsquo;s database.
+&lt;strong&gt;A database is not a contract&lt;/strong&gt;. If multiple services are sharing a database, these are not microservices.&lt;/p&gt;
+
+&lt;p&gt;These constraints must be kept in order to truly reap the benefits of microservices. To learn more about microservices,
+feel free to read &lt;a href=&#34;https://www.martinfowler.com/articles/microservices.html&#34;&gt;Martin Fowlers post&lt;/a&gt;, or read the book &lt;a href=&#34;https://www.amazon.com/Building-Microservices-Designing-Fine-Grained-Systems/dp/1491950358&#34;&gt;Building Microservices by Sam Newman&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;pros-and-cons-of-microservices&#34;&gt;Pros and Cons of Microservices&lt;/h2&gt;
+
+&lt;p&gt;Nothing is a silver bullet and that includes Microservices. Microservices are not for everyone. Deciding whether to use  microservices or not is about deciding where your priorities lie. The typical comparison for most is Microservices vs Monolith.
+A monolith is a single deployable app which contains all application code. There is only one code base, only one
+deployable, and one database (well, unless you&amp;rsquo;re sharding). A monolith is the exact opposite of a SOA architecture, so it balances the cons of microservices very well. That being said, there might be some models that are in the middle ground between microservice and monolith, but for this article I will compare and contrast the two.
+For some companies/people, the monolith will be the correct approach. But for Canopy, the answer was Microservices. Here
+are some of the pros/cons to microservices.&lt;/p&gt;
+
+&lt;h3 id=&#34;pros&#34;&gt;Pros&lt;/h3&gt;
+
+&lt;p&gt;1) &lt;strong&gt;No shared code base&lt;/strong&gt;. Typically when you use microservices, a microservice is owned by a specific team.
+When you have multiple code bases, your teams are less likely to step on each other&amp;rsquo;s toes.&lt;/p&gt;
+
+&lt;p&gt;2) &lt;strong&gt;Limited Blast Zones&lt;/strong&gt;. If a team pushes bad code or a service dies, it only affects that portion of the application.
+On a monolith, any change could potentially bring down the entire system.&lt;/p&gt;
+
+&lt;p&gt;3) &lt;strong&gt;Enforced Boundaries&lt;/strong&gt;. In single repo projects, boundaries are often defined, but are very theoretical. Breaking the boundaries by having separate code bases prevents people from creating code that crosses several boundaries. It is just too easy to cross boundaries in a single repo, and when people have deadlines they are likely to cut corners.&lt;/p&gt;
+
+&lt;p&gt;4) &lt;strong&gt;Autonomy&lt;/strong&gt;. Conway&amp;rsquo;s Law says that a software&amp;rsquo;s architecture will eventually mirror the organization&amp;rsquo;s communication structure.
+If you want &amp;ldquo;small blast zones&amp;rdquo; you have to create &lt;em&gt;autonomous&lt;/em&gt; teams. It is too difficult to create autonomous teams when
+everyone if working on a single repo. If you go with the monolith you end up getting a very hierarchical structure in your organization, as you need certain people/teams to coordinate everything.&lt;/p&gt;
+
+&lt;p&gt;5) &lt;strong&gt;Independent Scalability&lt;/strong&gt;. Some products that your organization delivers simply aren&amp;rsquo;t used to the same scale as your organization&amp;rsquo;s major products.
+Having to worry about large scale for products and features that have small use is troublesome. With Monoliths, every product and feature has to be built for your largest scale, since everything is deployed together.&lt;/p&gt;
+
+&lt;p&gt;6) &lt;strong&gt;Frequent small deployments&lt;/strong&gt;. Large projects lead to big deployments. Big deployments lead to lots of lock-steps and process. Process leads to infrequent deployments. Because services are independently deployable, the deployments tend to be smaller and have fewer lock-steps.
+These attributes of microservices allow you to deploy more frequently. Frequency matters when you want a low turn-around time on
+fixing bugs/security issues.&lt;/p&gt;
+
+&lt;p&gt;7) &lt;strong&gt;Easier Rewrites&lt;/strong&gt;. Because services are smaller, you can rewrite entire services without impacting other areas.
+In a single repo, rewrites are near impossible without freezing feature development.
+Sometimes the entire app still needs to be rewritten or changed (i.e. a database change).
+In these cases, you can change one service at a time, and not have to full freeze feature development.&lt;/p&gt;
+
+&lt;p&gt;8) &lt;strong&gt;Tech Stack agnostic&lt;/strong&gt;. Because services are split up with hard boundaries between each service, different tech stacks can be used for
+different products. Perhaps you&amp;rsquo;re building a new product and it could be written much faster/easier with a different language/database.
+In a monolith world, you are locked into your language/product decisions. You pick a framework and stick with it.
+In a microservices world, however, each service could have its own tech stack. You could even run your own experiments as to which
+tech stack is working better. If you ever decide you need to move to a new stack across services, you can do it one service at a time.&lt;/p&gt;
+
+&lt;h3 id=&#34;cons&#34;&gt;Cons&lt;/h3&gt;
+
+&lt;p&gt;1) &lt;strong&gt;Performance&lt;/strong&gt;. Microservices often have to make many remote calls to get data owned by other services. The services called have to go to their own database.
+What could have been a single database call with lots of joins is now a multi-service, multi-database call.&lt;/p&gt;
+
+&lt;p&gt;2) &lt;strong&gt;Dependency Management&lt;/strong&gt;. There are no dependencies on a Monolith. You just deploy it. In Microservices, you could depend
+on a new api for a service that hasn&amp;rsquo;t deployed yet. You have to manage those dependencies.&lt;/p&gt;
+
+&lt;p&gt;3) &lt;strong&gt;Tools/Configuration Management&lt;/strong&gt;. Because there is more than one service to manage, tools are required to manage services and their configurations. Many new tools will have to enter your stack to manage the full picture. You might want
+a single place to aggregate all logs, metrics, etc. What used to be a simple log file or sql query is now a tool
+that must be purchased, built, or used, as well as maintained.&lt;/p&gt;
+
+&lt;p&gt;4) &lt;strong&gt;Operations&lt;/strong&gt;. Managing a swarm of duplicate stateless servers is relatively easy. Managing a cluster of services where every server
+potentially has different configurations and services that run on it is much more of a headache. If services have different stacks, they are not all built the same.
+Tools are required to manage the operations overhead.&lt;/p&gt;
+
+&lt;p&gt;5) &lt;strong&gt;Transaction Safety&lt;/strong&gt;. On a monolith, you can make every request a single transaction. If anything goes wrong anywhere,
+the whole thing can be rolled back. In a microservice environment, a service could fail after it tells another service to
+do something. This could cause potential data issues.&lt;/p&gt;
+
+&lt;p&gt;6) &lt;strong&gt;Service Discovery&lt;/strong&gt;. Now that there are many services, you need a way for the services to find/talk to each other.&lt;/p&gt;
+
+&lt;p&gt;7) &lt;strong&gt;Backwards Compatibility&lt;/strong&gt;. When you deploy everything together, you can easily change things such as an API. The new code calls the new API, and everything is great. In a microservice world, you can&amp;rsquo;t control other services; your APIs must stay backwards compatible &amp;ndash; potentially forever.&lt;/p&gt;
+
+&lt;p&gt;8) &lt;strong&gt;Debugging&lt;/strong&gt;. Errors can potentially span many services. It can be hard to know which service an error is really coming from. There is no longer a single stack to debug, and its harder to trace
+what happens across boundaries.&lt;/p&gt;
+
+&lt;p&gt;9) &lt;strong&gt;Overall Complexity&lt;/strong&gt;. A microserviced system is a distributed system. There are a lot more parts, and the system as a whole gets a lot harder to manage and reason about.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-answer-is-microservices&#34;&gt;The answer is&amp;hellip; Microservices!&lt;/h2&gt;
+
+&lt;p&gt;At Canopy, we decided to bet on microservices despite its cons. We felt that &lt;strong&gt;Autonomy&lt;/strong&gt;, &lt;strong&gt;Limited Blast Zones&lt;/strong&gt; and &lt;strong&gt;Frequent Deploys&lt;/strong&gt; were the most important things for our company, and it outweighed the cons. We ultimately decided that microservices would be a big buy in cost, but would pay dividends in the long run. Here are some our thoughts on the pros and cons and
+why we went with the decision we did.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Autonomy&lt;/strong&gt;: Autonomy is very important to Canopy. Nothing good ever comes from micro-managing.
+We believe that when you empower developers to make their own decisions, they move fast and make better decisions. Sure, at times they might make bad decisions, but as long as we fail fast, then we can learn from it.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Frequent Deploys&lt;/strong&gt;: The best way to be successfully is to make many mistakes and to fail quickly. &lt;em&gt;Ken Robinson&lt;/em&gt; said: &amp;ldquo;&lt;code&gt;If you&#39;re not prepared to be wrong, you&#39;ll never come up with anything original.&lt;/code&gt;&amp;rdquo; At Canopy, if we are going to innovate, we need to be able to fail many times. Ideally we recover from our failures as quickly as possible. In order to do that, we need to have short, frequent deploys. Infrequent deploys will scare us into trying new things.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Limited Blast Zones&lt;/strong&gt;: If we are failing a lot, then we need a way to fail &amp;ldquo;safely&amp;rdquo;. Adding blast zones to our app allows us to feel more comfortable failing. If we fail we only affect some things. Customers enjoy when things don&amp;rsquo;t constantly break. Very few customers use ALL features of the app in the same day.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Operation Management&lt;/strong&gt;: Microservices adds a significant overhead to operations. This could require an entire operations team. Instead, Canopy has decided to help mitigate this issue by building a culture of &amp;ldquo;You Build It - You Run It&amp;rdquo;. Developers are essentially responsible for handling the operations of their services.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Tools/Configuration Management&lt;/strong&gt;: Many tools are required to manage the differences between services. This can be mitigated by hiring a DevOps team. A team responsible for helping manage all the configuration and settings of the services by providing tools to help get various tasks done.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;In summary, Canopy has chosen microservices despite the upfront cost and challenges in order to
+help foster a culture of autonomy and fast-failing. As Canopy is growing really fast, the microservices separation of responsibilities should help us scale as an organization without slowing our rate of innovation.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -27,7 +165,24 @@
       <pubDate>Wed, 14 Jun 2017 08:05:03 -0700</pubDate>
       
       <guid>https://canopytax.github.io/post/systemjs-sponsorship/</guid>
-      <description>Open-source Software Canopy is a SaaS product for tax professionals built upon a variety of open-source technology. When a project is open-sourced under a permissive license that means anybody can view, use, modify, and distribute your project for any purpose (https://opensource.guide). Open-source technology is built and maintained by hundreds and thousands of developers who may each contribute hundreds or even thousands of volunteer hours. While the success of most modern software companies is dependent upon a collection of open-source software, open-source development is often a difficult and thankless task.</description>
+      <description>
+
+&lt;h4 id=&#34;open-source-software&#34;&gt;Open-source Software&lt;/h4&gt;
+
+&lt;p&gt;Canopy is a SaaS product for tax professionals built upon a variety of open-source technology. When a project is open-sourced under a permissive license that means anybody can view, use, modify, and distribute your project for any purpose (&lt;a href=&#34;https://opensource.guide/starting-a-project/&#34;&gt;https://opensource.guide&lt;/a&gt;). Open-source technology is built and maintained by hundreds and thousands of developers who may each contribute hundreds or even thousands of volunteer hours. While the success of most modern software companies is dependent upon a collection of open-source software, open-source development is often a difficult and thankless task.&lt;/p&gt;
+
+&lt;h4 id=&#34;sponsorship-of-systemjs&#34;&gt;Sponsorship of SystemJS&lt;/h4&gt;
+
+&lt;p&gt;Because Canopy’s success is built upon open-source software, we believe we should also be financially invested in those who maintain it. We are pleased to announce that Canopy will immediately be sponsoring SystemJS for a period of six months with the possibility of further extension. We hope that our financial backing of open-source will encourage other companies to do the same.&lt;/p&gt;
+
+&lt;h4 id=&#34;what-is-systemjs&#34;&gt;What is SystemJS?&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/systemjs/systemjs&#34;&gt;SystemJS&lt;/a&gt; is a dynamic ECMAScript module loader that allows Canopy to dynamically load code at run-time in the browser. This functionality has allowed Canopy to innovate and &lt;a href=&#34;https://github.com/CanopyTax/sofe&#34;&gt;build technology that would be difficult to create otherwise&lt;/a&gt;. SystemJS allows our code to be loaded in a way that is compliant with the ES module specifications instead of using a non-standard proprietary module format. In addition to providing financial support, we plan to be involved in helping move the project forward in continuing to support the latest browser module loading specifications.&lt;/p&gt;
+
+&lt;h4 id=&#34;we-are-hiring&#34;&gt;We are Hiring&lt;/h4&gt;
+
+&lt;p&gt;Canopy is a firm believer in the the power of open-source and community driven development. In addition to financially backing open software, Canopy hosts meet-ups, sponsors local events, and authors a variety of open-source projects. Those projects include: &lt;a href=&#34;https://github.com/CanopyTax/single-spa&#34;&gt;single-spa&lt;/a&gt;, &lt;a href=&#34;https://github.com/CanopyTax/sofe&#34;&gt;sofe&lt;/a&gt;, &lt;a href=&#34;https://github.com/CanopyTax/asyncpgsa&#34;&gt;asyncpgsa&lt;/a&gt; and &lt;a href=&#34;https://github.com/CanopyTax&#34;&gt;others&lt;/a&gt;. We are always looking for motivated, passionate, and talented engineers! Checkout our open positions on our &lt;a href=&#34;https://www.canopytax.com/careers/?utm_source=systemjs-blog&#34;&gt;careers&lt;/a&gt; page.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -36,9 +191,184 @@
       <pubDate>Fri, 16 Dec 2016 19:54:28 +0000</pubDate>
       
       <guid>https://canopytax.github.io/post/a-step-by-step-guide-to-single-spa/</guid>
-      <description>Running Angular 1, React, Angular 2, and Vue.js side by side sounds pretty cool. And it seems appealing to have multiple applications coexisting on the same page, each lazily loaded.
-But using single-spa for the first time can be tricky because you’ll come across terms like “application lifecycles”, “root application”, “loading function”, “child application”, and “activity function.”
-This blog post will take you through setting things up and what choices you have when using single-spa.</description>
+      <description>
+
+&lt;p&gt;Running Angular 1, React, Angular 2, and Vue.js side by side sounds pretty cool. And it seems appealing to have multiple applications coexisting on the same page, each lazily loaded.&lt;/p&gt;
+
+&lt;p&gt;But using &lt;a href=&#34;https://github.com/CanopyTax/single-spa&#34;&gt;single-spa&lt;/a&gt; for the first time can be tricky because you’ll come across terms like “application lifecycles”, “root application”, “loading function”, “child application”, and “activity function.”&lt;/p&gt;
+
+&lt;p&gt;This blog post will take you through setting things up and what choices you have when using single-spa. It’s based on what I’ve seen at Canopy Tax where we went from an Angular 1 monolith to an Angular 1, React, and Svelte polyglot.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-one-choose-a-module-loader&#34;&gt;Step One: choose a module loader.&lt;/h3&gt;
+
+&lt;p&gt;Your module loader / bundler is the library you’ll use to lazy load code. I recommend either Webpack or JSPM, if you’re starting from scratch.&lt;/p&gt;
+
+&lt;p&gt;If you go with Webpack, try to use Webpack 2 if you can, since it has &lt;a href=&#34;https://webpack.js.org/guides/migrating/#code-splitting-with-es2015&#34;&gt;support for promise-based lazy loading&lt;/a&gt;. This will make things easier for you later on, since single-spa requires that your &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#loading-function&#34;&gt;loading functions&lt;/a&gt; return promises. If you can’t use Webpack 2, getting single-spa to lazy load your code with Webpack 1 will require some boilerplate code.&lt;/p&gt;
+
+&lt;p&gt;JSPM/SystemJS has worse documentation than Webpack, but is a great solution for module loading if you can get past that. I recommend using jspm@0.17 — it’s still in beta but has been worked on for over a year and at Canopy we find it stable enough to use in production.&lt;/p&gt;
+
+&lt;p&gt;If you’re struggling to decide between the two, then ask yourself the following: Do I want multiple completely separate bundles? If you don’t, I recommend Webpack because it has better docs, a larger community, and fewer gotchas. Otherwise, I’d go with JSPM, since Webpack has no plans to support dynamic runtime loading (See tweet below from Mr. Larkin, himself).&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;indeed!! It&amp;#39;s a static bundler! Module loading is something we won&amp;#39;t do :)&lt;/p&gt;&amp;mdash; Sean Larkin (@TheLarkInn) &lt;a href=&#34;https://twitter.com/TheLarkInn/status/789968589419745280&#34;&gt;October 22, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;step-two-create-a-brand-new-html-file&#34;&gt;Step Two: create a brand new html file&lt;/h3&gt;
+
+&lt;p&gt;The next step is to create what single-spa calls your “&lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md&#34;&gt;root application&lt;/a&gt;.” Really your root application is just the stuff that initializes single-spa, and it starts with an html file.&lt;/p&gt;
+
+&lt;p&gt;Even if you’ve got an existing project that already has it’s own html file, I recommend starting fresh with a new html file. That way, there is a clear distinction between what is in your root application (shared between all apps) and what is in a child application (not shared with everything).&lt;/p&gt;
+
+&lt;p&gt;You’ll want to keep your root application as small as possible, since it’s sort of the master controller of everything and could become a bottleneck. You don’t want to be constantly changing &lt;em&gt;both&lt;/em&gt; the root application &lt;em&gt;and&lt;/em&gt; the child applications.&lt;/p&gt;
+
+&lt;p&gt;So for now, just have a &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; to a single javascript file (root-application.js), which will be explained in Step Three.&lt;/p&gt;
+
+&lt;p&gt;Since Webpack is probably the more common use case, my code examples from here on will assume that you’re using Webpack 2. The equivalent Webpack 1 or JSPM code has all the same concepts and only some minor code differences.&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&#34;text/javascript&#34; src=&#34;http://gist.github.com/fa2428d1df615387aa763d8b0e29e6c1.js&#34;&gt;&lt;/script&gt;
+
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;step-three-register-a-child-application&#34;&gt;Step Three: register a “child application”&lt;/h3&gt;
+
+&lt;p&gt;Now it’s time to finish up your root application by writing your “root-application.js” file. The primary purpose of root-application.js is to call &lt;code&gt;[singleSpa.declareChildApplication(..)](https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#declaring-child-applications)&lt;/code&gt; for each of the applications that will be managed by single-spa.&lt;/p&gt;
+
+&lt;p&gt;If you’re into analogies, you can think of single-spa as the operating system for your single page application, managing which “processes” (or “child applications”) are running at any given time. At any moment, some of the child applications will be active on the DOM and others will not. As the user navigates throughout the app, some applications will be unmounting from the DOM and others will be mounting to the DOM.&lt;/p&gt;
+
+&lt;p&gt;Another way to look at it is that single-spa is a master router on top of your other routers.&lt;/p&gt;
+
+&lt;p&gt;To do this, first &lt;code&gt;npm install single-spa&lt;/code&gt; and then call the &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#declaring-child-applications&#34;&gt;declareChildApplication&lt;/a&gt; function:&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;http://gist.github.com/d72c28eb395665849b5fd311f33272f2.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Because single-spa is &lt;em&gt;so very&lt;/em&gt; cool, we’ve created an app called “cool-app” that will be lazy loaded and mounted to the DOM whenever the url hash starts with &lt;code&gt;#/cool&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;loadCoolApp&lt;/code&gt; function is what single-spa calls a &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#loading-function&#34;&gt;loading function&lt;/a&gt;. Inside of it, the &lt;code&gt;System.import&lt;/code&gt; introduces a code splitting point — Webpack will create separate code chunks that will be lazy loaded by single-spa.&lt;/p&gt;
+
+&lt;p&gt;For your specific project, you probably won’t have a hash prefix of “cool”, but I recommend establishing some kind of convention that makes it easy to determine which apps are active. This will simplify the maintenance of your &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#activity-function&#34;&gt;activity functions&lt;/a&gt;, as you add more and more child applications.&lt;/p&gt;
+
+&lt;p&gt;If you’re going to start out with just one child application, then it might make sense to implement the activity function as&lt;code&gt;() =&amp;gt; true&lt;/code&gt;. You can worry about getting fancier once you have more than one application.&lt;/p&gt;
+
+&lt;p&gt;The last thing is to call &lt;code&gt;start()&lt;/code&gt;. This is something you &lt;strong&gt;must do for things to work.&lt;/strong&gt; The purpose is to give control over timing and performance. But until that is a concern, &lt;code&gt;start&lt;/code&gt; is just one of those things you do, and then maybe &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/single-spa-api.md#start&#34;&gt;read about it&lt;/a&gt; later if you ever need to.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-four-create-app-js-file&#34;&gt;Step Four: create “.app.js” file&lt;/h3&gt;
+
+&lt;p&gt;When you open up your index.html file in the browser, you’ll now see….. a blank screen! We’re really close, but there’s one crucial step left: building your app.js file.&lt;/p&gt;
+
+&lt;p&gt;After that, you’ll have everything working for your first single-spa application.&lt;/p&gt;
+
+&lt;p&gt;An app.js file is a configuration file that you create for each child application. It is the code that is lazy loaded when your activity function returns true.&lt;/p&gt;
+
+&lt;p&gt;There are three things that you need to implement in the app.js file:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;A &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/child-applications.md#bootstrap&#34;&gt;bootstrap lifecycle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/child-applications.md#mount&#34;&gt;mount lifecycle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;An &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/child-applications.md#unmount&#34;&gt;unmount lifecycle&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A “lifecycle” is a function or array of functions that will be called by single-spa; you export these from the app.js file. Each function must return a Promise so that single-spa knows when it is completed.&lt;/p&gt;
+
+&lt;p&gt;Here is a simple example:&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;http://gist.github.com/d96a25991b1e53437c14437fadd32af0.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;At this point, you might be seeing the &lt;code&gt;document.getElementById&lt;/code&gt; and &lt;code&gt;innerHTML =&lt;/code&gt; and worry that you’ve been duped — maybe single-spa is really just a poor excuse for a ui component framework.&lt;/p&gt;
+
+&lt;p&gt;And really, don’t we already have a lot of different ways to write UI components?&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;But getting all of those frameworks to work together.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Using multiple frameworks&lt;/em&gt; is where single-spa really shines. It is not a ui framework itself, but a framework for using other frameworks.&lt;/p&gt;
+
+&lt;p&gt;Each child application can be written in any framework, so long as it implements application lifecycle functions. Then the mini-apps cooperate to form the entire single page application.&lt;/p&gt;
+
+&lt;p&gt;So going back to our previous example, we could choose to write our “cool.app.js” as an Angular 1 app, and choose something else for future apps:&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;http://gist.github.com/d95775208c12b648ebc0e893258ec5be.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;In this example, we use a helper library called &lt;code&gt;single-spa-angular1&lt;/code&gt; which abstracts away the specifics of initializing Angular 1 apps. This blogpost doesn’t show you the &lt;code&gt;app.module.js&lt;/code&gt; or &lt;code&gt;routes.js&lt;/code&gt; files, but you can see an example implementation &lt;a href=&#34;https://github.com/CanopyTax/single-spa-examples/tree/master/src/angular1&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The pattern is to call &lt;code&gt;singleSpaAngular1&lt;/code&gt; at the very beginning, which returns &lt;code&gt;bootstrap&lt;/code&gt;, &lt;code&gt;mount&lt;/code&gt;, and &lt;code&gt;unmount&lt;/code&gt; lifecycle functions for you.&lt;/p&gt;
+
+&lt;p&gt;You might notice that this time the lifecycles are exported as arrays of functions instead of just functions — you can choose whichever works best for you.&lt;/p&gt;
+
+&lt;p&gt;The advantage of exporting an array of functions is that you can add in your own custom behavior (like &lt;code&gt;aboutToBootstrap&lt;/code&gt; and &lt;code&gt;doneBootstrap&lt;/code&gt;) that will run before or after the Angular 1 lifecycles. When you export an array, each item in the array must be a function that returns a promise. Single-spa will wait for each promise to resolve, in order, before calling the next function in the array.&lt;/p&gt;
+
+&lt;p&gt;To learn more about single-spa helper libraries, check out these github projects:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/CanopyTax/single-spa-angular1&#34;&gt;single-spa-angular1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/CanopyTax/single-spa-react&#34;&gt;single-spa-react&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/CanopyTax/single-spa-angular2&#34;&gt;single-spa-angular2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/CanopyTax/single-spa-vue&#34;&gt;single-spa-vue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/CanopyTax/single-spa-svelte&#34;&gt;single-spa-svelte&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/CanopyTax/single-spa-preact&#34;&gt;single-spa-preact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can also see a fully working example of an angular app coexisting with other apps at the &lt;a href=&#34;https://github.com/CanopyTax/single-spa-examples&#34;&gt;single-spa-examples repo&lt;/a&gt; or the &lt;a href=&#34;http://single-spa.surge.sh&#34;&gt;live demo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;step-five-test-it-out&#34;&gt;Step Five: test it out!&lt;/h3&gt;
+
+&lt;p&gt;Refresh your page and you should now have a functioning single-spa application!&lt;/p&gt;
+
+&lt;p&gt;Try navigating to a url that your child app is active for (&lt;code&gt;#/cool&lt;/code&gt;) and then navigating away from it. When you do so, the page will not refresh but you should see your application mount itself to the DOM and then unmount.&lt;/p&gt;
+
+&lt;p&gt;If you run into problems, try to narrow down whether the problem is in the root application or in the child application. Is your root application being executed? Are the declareChildApplication calls being made? Have you called &lt;code&gt;start()&lt;/code&gt;? Is there a network request to download the code for your child application? Is your child application&amp;rsquo;s&lt;code&gt;bootstrap&lt;/code&gt; lifecycle being called? What about &lt;code&gt;mount&lt;/code&gt;?&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*WMFuo-hz-Q31UVbTHAx4lw.png&#34; alt=&#34;single-spa-architecture&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        single-spa-architecture
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;It may be helpful to add a navigation menu, so you can verify everything mounts and unmounts to the DOM correctly. If you want to level up your single-spa skills even more, make the navigation menu an entire child application whose activity function is &lt;code&gt;() =&amp;gt; true&lt;/code&gt;. An example that does just that is found &lt;a href=&#34;https://github.com/CanopyTax/single-spa-examples/blob/master/src/single-spa-examples.js#L3&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;https://github.com/CanopyTax/single-spa-examples/blob/master/src/navbar/navbar.app.js&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;While you are verifying that everything is working, keep in mind that each application goes through five phases:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*utKlcxBkDXfQAQR52B0hAA.png&#34; alt=&#34;an-applications-lifecycle&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        an-applications-lifecycle
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;As you get your feet wet, you’ll probably run into some (hopefully small) hiccups setting things up. When this tutorial is not enough, there are other resources on &lt;a href=&#34;https://github.com/CanopyTax/single-spa&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Single-spa is still a relatively new thing, and we’d love to hear your feedback and questions. We welcome contributions from everyone.&lt;/p&gt;
+
+&lt;p&gt;If you’re excited about the possibilities, feel free to contact me (twitter &lt;a href=&#34;https://twitter.com/Joelbdenning&#34;&gt;@joelbdenning&lt;/a&gt;). And if you are not excited, then still feel free to contact me, but only after you leave some nasty comments :)&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -47,9 +377,142 @@ This blog post will take you through setting things up and what choices you have
       <pubDate>Fri, 16 Sep 2016 08:05:03 -0700</pubDate>
       
       <guid>https://canopytax.github.io/post/case-against-angular-upgrade-adapter/</guid>
-      <description>If you’re hoping to migrate your Angular 1 application to Angular 2, you’re going to hear about the Angular Upgrade Adapter, which let’s you run ng1 and ng2 apps side by side.
-It’s not that Angular Upgrade Adapter is bad or poorly written or doesn’t work. And it’s not the Typescript or the Angular 2 or the SystemJS.
-But here are two reasons that will make you think twice about using Angular Upgrade Adapter:</description>
+      <description>
+
+&lt;p&gt;If you’re hoping to migrate your Angular 1 application to Angular 2, you’re
+going to hear about the &lt;a href=&#34;https://angular.io/docs/ts/latest/guide/upgrade.html&#34;&gt;Angular Upgrade
+Adapter&lt;/a&gt;, which let’s you
+run ng1 and ng2 apps side by side.&lt;/p&gt;
+
+&lt;p&gt;It’s not that Angular Upgrade Adapter is bad or poorly written or doesn’t work.
+And it’s not the Typescript or the Angular 2 or the SystemJS.&lt;/p&gt;
+
+&lt;p&gt;But here are two reasons that will make you think twice about using Angular
+Upgrade Adapter:&lt;/p&gt;
+
+&lt;h3 id=&#34;1-you-ll-still-have-to-rewrite-everything&#34;&gt;1. You’ll still have to rewrite everything&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*VhuRgvrW6GijrjEpZtqnxA.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This comic strip is a real story, and I am the Dilbert. One time at Amazon I
+made a joke to my product manager. It was about rewriting code. He didn’t laugh.
+Then I joked about how he didn’t think it was funny. Still nothing. Then I
+walked away.&lt;/p&gt;
+
+&lt;h3 id=&#34;2-you-ll-probably-have-to-do-this-again-anyways&#34;&gt;2. You’ll probably have to do this again, anyways&lt;/h3&gt;
+
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;I think I&amp;#39;ve had milk last longer than some JavaScript frameworks.&lt;/p&gt;&amp;mdash; I Am Devloper (@iamdevloper) &lt;a href=&#34;https://twitter.com/iamdevloper/status/540481335362875392&#34;&gt;December 4, 2014&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Developers are just machines that consume Twitter and produce frameworks. And,
+really, I wouldn’t have it any other way. Trying out a new framework is just too
+fun to give up. And when &lt;em&gt;I’m&lt;/em&gt; not the one pushing for us to try out the new
+shiny, somebody else is. Even if we have that big meeting where we talk for an
+hour and a half and everyone agrees that Angular 2 is the “framework we decided
+on”, it won’t last.&lt;/p&gt;
+
+&lt;h3 id=&#34;so-is-this-just-how-new-frameworks-are&#34;&gt;So is this just how new frameworks are?&lt;/h3&gt;
+
+&lt;p&gt;For a long time I thought the solution to the “framework problem” was staying on
+top of everything. If I migrate early to beta versions and release candidates,
+somehow that makes my inability to switch frameworks okay. Another thing I
+thought was that if I could just find the &lt;em&gt;right framework&lt;/em&gt; that we’d be happy.
+Or that somehow we could cure ourselves of the desire to switch frameworks.&lt;/p&gt;
+
+&lt;p&gt;Turns out that’s just not true. And once I accepted that, I realized it’s
+totally okay!&lt;/p&gt;
+
+&lt;h3 id=&#34;let-s-get-meta&#34;&gt;Let’s get meta.&lt;/h3&gt;
+
+&lt;p&gt;I think it’s time for the Javascript community to get meta with frameworks.
+Instead of finding the &lt;em&gt;right&lt;/em&gt; framework and hoping that it works out, what if
+we were capable of simultaneously using any number of frameworks?&lt;/p&gt;
+
+&lt;p&gt;What if we had a bring-your-own-framework mentality where multiple apps
+cooperate within one SPA? A framework for using frameworks.&lt;/p&gt;
+
+&lt;p&gt;A Javascript metaframework.&lt;/p&gt;
+
+&lt;p&gt;Where I work this is what we’ve been trying to figure out. What would something
+like this even mean? Could we start each project as a green field instead of
+locked-in to our previous technology decisions? How do we pull it off?&lt;/p&gt;
+
+&lt;h3 id=&#34;a-different-approach&#34;&gt;A different approach&lt;/h3&gt;
+
+&lt;p&gt;What we’ve come up with is a project called
+&lt;a href=&#34;https://github.com/CanopyTax/single-spa&#34;&gt;single-spa&lt;/a&gt; and so far we love it.
+It’s an alternative to upgrade guides and migration tools. An early entry to the
+nascent world of “Javascript metaframeworks.”&lt;/p&gt;
+
+&lt;p&gt;Instead of migrating your large Angular 1 application to Angular 2, single-spa
+has you split it up into several small applications that coexist in the same
+SPA. Once split up, you can tackle each one of the applications individually.
+When Angular 2 makes sense, migrate one of the apps to be Angular 2. If React
+makes sense, rewrite one of them in React.&lt;/p&gt;
+
+&lt;p&gt;Or if you don’t want to rewrite anything at all, just let your application
+remain while still giving yourself the option to try something else for new
+projects.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*jiiG-Dxyk6OmVCy2EOtLCA.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;The benefit is that your approach is framework-agnostic. When you want to try
+out a new framework, you have a way to do so. Compare this to Angular Upgrade
+Adapter, which is a one-way door that leads to Angular 2. What do you do when
+you want to try out React or something else?&lt;/p&gt;
+
+&lt;p&gt;What single-spa is doing is managing your applications for you. You can think of
+it like a framework agnostic router on top of all other applications. It manages
+which applications are active and which ones are dormant.&lt;/p&gt;
+
+&lt;h3 id=&#34;how-to-try-it-out&#34;&gt;How to try it out&lt;/h3&gt;
+
+&lt;p&gt;Single-spa works with es5, es6+, typescript, webpack, systemjs, gulp, grunt,
+bower, or really any build system you can think of. You can npm install it, jspm
+install it, or even just use a script tag if you prefer. It works in Chrome,
+Firefox, Safari, Edge, and (at least) IE11.&lt;/p&gt;
+
+&lt;p&gt;To give it a shot, you’ll have to &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/migrating-existing-spas.md&#34;&gt;migrate your
+SPA&lt;/a&gt;
+to become a single-spa child application. After you do so, the entry file to
+your application will look something like this:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*YNZMoyijJown_nOBrQ0wxA.png&#34; alt=&#34; &#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+         
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Once you’ve added a file like this to your app, you’re ready! You can keep your
+existing ui-router configuration and your ng1 controllers, services, and
+directives.&lt;/p&gt;
+
+&lt;p&gt;The docs for single-spa are &lt;a href=&#34;https://github.com/CanopyTax/single-spa/tree/master/docs&#34;&gt;located
+here&lt;/a&gt;, let us know
+what you think!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Originally posted at
+&lt;a href=&#34;https://medium.com/@joeldenning/a-case-against-angular-update-adapter-d4e121282a11&#34;&gt;https://medium.com/@joeldenning/a-case-against-angular-update-adapter-d4e121282a11&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -58,8 +521,181 @@ But here are two reasons that will make you think twice about using Angular Upgr
       <pubDate>Fri, 26 Feb 2016 08:05:03 -0700</pubDate>
       
       <guid>https://canopytax.github.io/post/soa-in-the-browser/</guid>
-      <description>So you are a web-developer. You write a lot of JavaScript. You have a large single-page application (SPA) with features to add and bugs to maintain. Over time the application grows in size and complexity. It becomes more difficult to modify one portion of the SPA without breaking another portion.
-The company is growing and you are looking for ways to scale the team and code-base. You add unit tests.</description>
+      <description>
+
+&lt;p&gt;So you are a web-developer. You write a lot of JavaScript. You have a large
+single-page application (SPA) with features to add and bugs to maintain. Over
+time the application grows in size and complexity. It becomes more difficult to
+modify one portion of the SPA without breaking another portion.&lt;/p&gt;
+
+&lt;p&gt;The company is growing and you are looking for ways to scale the team and
+code-base. You add unit tests. You add a linter. You add continuous integration.
+You modularize the code with ES2015 modules, webpack, and npm. Eventually you
+even introduce new, independent SPAs with each SPA being owned and deployed by
+independent squads. Congratulations, you have successfully introduced
+service-oriented architecture on the front-end, or have you?&lt;/p&gt;
+
+&lt;h4 id=&#34;what-is-service-oriented-architecture&#34;&gt;What is Service-oriented Architecture?&lt;/h4&gt;
+
+&lt;p&gt;The fundamental concept behind service-oriented architecture is a service. A
+service is an isolated piece of code which can only be interacted with through
+its API. Unlike a shared library, a service itself can be deployed independently
+of its consumers. Think of a back-end API. The API is the service and the
+browser is the consumer. The API is deployed independently of the front-end
+application. There is also only one deployed version of the API available at a
+URL.&lt;/p&gt;
+
+&lt;p&gt;Contrast a service to a shared library. A shared library is a piece of code that
+is bundled and deployed with your code. For example, libraries such as Express,
+Lodash, and React are all shared libraries included in your application’s
+distributable. Upgrading a version of a shared library requires a new deployment
+of that distributable.&lt;/p&gt;
+
+&lt;p&gt;Service-oriented architecture is an approach to building software where the
+application is composed of many independent and isolated services. Those
+services are independently deployable, generally non-versioned, and auto
+discoverable.&lt;/p&gt;
+
+&lt;h4 id=&#34;why-service-oriented-architecture-on-the-front-end&#34;&gt;Why Service-oriented Architecture on the Front-end?&lt;/h4&gt;
+
+&lt;p&gt;The benefits of SOA can be illustrated with this real life example from Canopy.
+At Canopy we have multiple single page applications. The first application is
+external to the customers and the second is internal, yet both applications
+share common functionality. That functionality includes among other things,
+authentication and error logging.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://cdn-images-1.medium.com/max/800/1*itLASVdD-5a3fm56hfltYQ.png&#34; alt=&#34;Shared libraries between two separate applications. App 1 depends upon shared libs a, b, and c. App 2 depends upon only shared libs a and b.&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        Shared libraries between two separate applications. App 1 depends upon shared libs a, b, and c. App 2 depends upon only shared libs a and b.
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Overall the design looks good. The code is modularized and shared. The
+complexities arrive when we start to upgrade the code to different versions. For
+example, after a short period of time, &lt;strong&gt;App 2&lt;/strong&gt; (being internal only) is upgraded to a new beta version of the shared lib &lt;strong&gt;b&lt;/strong&gt;. Because the shared
+&lt;strong&gt;a&lt;/strong&gt; also depends upon &lt;strong&gt;b&lt;/strong&gt; (and we don’t want multiple versions of b bundled)
+we also create a new version of &lt;strong&gt;a&lt;/strong&gt;. This one change causes a rebuild and
+deploy of three separate pieces of code: &lt;strong&gt;App 2&lt;/strong&gt; and shared libs &lt;strong&gt;a&lt;/strong&gt; and
+&lt;strong&gt;b&lt;/strong&gt;. Our dependency structure is no longer quite so simple.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://cdn-images-1.medium.com/max/1200/1*T5YHqkoZApSvC32jVS0osw.png&#34; alt=&#34;In reality, a duplicate instance of lib a and b exist in both apps. Each app does not point to the same instance of the shared libraries, even when they are the same version. This is more noticeable when the shared libraries have separate versions.&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        In reality, a duplicate instance of lib a and b exist in both apps. Each app does not point to the same instance of the shared libraries, even when they are the same version. This is more noticeable when the shared libraries have separate versions.
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Now imagine a bug in both versions of shared lib &lt;strong&gt;b&lt;/strong&gt;. In order to fix the
+problem, you will have to republish both versions of &lt;strong&gt;a&lt;/strong&gt; and &lt;strong&gt;b&lt;/strong&gt; as well as
+&lt;strong&gt;c&lt;/strong&gt;. Also &lt;strong&gt;App 1&lt;/strong&gt; and &lt;strong&gt;App 2&lt;/strong&gt; will have to be re-deployed. That is five
+new versions to publish and two apps to redeploy, all to fix one bug. All
+downstream dependencies have to be redeployed when a single library is changed.
+This is deploy dependency hell.&lt;/p&gt;
+
+&lt;p&gt;Service oriented architecture avoids these problems in a couple ways. Instead of
+bundling common dependencies, common code is shared through independent
+services. Services are not bundled, but rather loaded at run time. This also
+means that front-end services are not versioned (just like a back-end API). Both
+&lt;strong&gt;App 1&lt;/strong&gt; and &lt;strong&gt;App 2&lt;/strong&gt; load the exact same code for a front-end service.&lt;/p&gt;
+
+&lt;h4 id=&#34;introducing-sofe&#34;&gt;Introducing sofe&lt;/h4&gt;
+
+&lt;p&gt;Built upon the new ECMAScript module specification, sofe is a JavaScript library
+that enables independently deployable JavaScript services to be retrieved at
+run-time in the browser. Because the new module specification isn’t available
+within today’s browsers, sofe relies upon
+&lt;a href=&#34;https://github.com/systemjs/systemjs&#34;&gt;System.js&lt;/a&gt; to load services at run-time.&lt;/p&gt;
+
+&lt;p&gt;You can load a sofe service either with static or asynchronous imports:&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;http://gist.github.com/fb784992748f7d285f35bd26baa8a308.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;The real power behind sofe is that services are resolved at run-time, making
+them unversioned. If &lt;strong&gt;auth-service&lt;/strong&gt; is redeployed, it is immediately made
+available to all upstream dependencies. The above scenario becomes much easier
+to resolve because there is only &lt;em&gt;one&lt;/em&gt; version of each shared library as
+services. This is powerful because it allows you to deploy once, update
+everywhere. Also because the code is loaded at run-time, we can also enable
+developer tools to override what service is loaded into your application. Or in
+other words, you can test code on production without actually deploying to
+production.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://cdn-images-1.medium.com/max/1000/1*o7IS8yKgYKSDc2w7VpyZFw.png&#34; alt=&#34;The common dependencies are now services that are independent from the application code. Because services are unversioned, the dependency structure is again flat. Each service can individually be deployed and be available to every upstream dependency.&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        The common dependencies are now services that are independent from the application code. Because services are unversioned, the dependency structure is again flat. Each service can individually be deployed and be available to every upstream dependency.
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;The common dependencies are now services that are independent from the application code. Because services are unversioned, the dependency structure is again flat. Each service can individually be deployed and
+be available to every upstream dependency.&lt;/p&gt;
+
+&lt;p&gt;Obviously not all front-end code should be a service. Services have their own
+challenges. Specifically your code has to stay backwards compatible. But code
+can’t always be backwards compatible. Sometimes there needs to be breaking
+changes. The same problem exists for back-end services. A back-end API has to
+stay backwards compatible. Breaking changes on the back-end are generally solved
+by either creating an entirely new (versioned) API or implementing feature
+toggles within the API itself. The same solution applies to sofe services. An
+entirely new sofe service can be deployed or feature toggles can exist inside
+the front-end service. However it is solved, the key point is that services
+exist outside your application within their own distributable.&lt;/p&gt;
+
+&lt;p&gt;Another potential problem for sofe services is performance. Because they are
+loaded at run-time, performance can become a concern if you synchronously load
+too many services during bootstrap. Performance degradation can be mitigated by
+asynchronously loading larger services after the application bootstraps. Despite
+these challenges, there are many benefits to services on the front-end. The most
+exciting thing about sofe is there is now an option for services in the browser.
+You can decide what should and shouldn’t be a service.&lt;/p&gt;
+
+&lt;p&gt;Getting started with sofe requires only System.js. But to help you get started
+we have built sofe to work with a variety of technologies, including webpack,
+Babel, jspm, and the Chrome Developer Tools. Sofe is also actively used in
+production at Canopy Tax. We would love feedback on sofe and a number of open
+source projects that have been built around it. As you approach your next
+front-end project or look to improve your existing app, consider how it might
+benefit from service oriented architecture.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Read more about how to get started with sofe at: &lt;a href=&#34;https://github.com/CanopyTax/sofe&#34;&gt;https://github.com/CanopyTax/sofe&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Originally posted at &lt;a href=&#34;https://medium.com/@blittle/a-case-for-soa-in-the-browser-f777a9f139b2&#34;&gt;https://medium.com/@blittle/a-case-for-soa-in-the-browser-f777a9f139b2&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

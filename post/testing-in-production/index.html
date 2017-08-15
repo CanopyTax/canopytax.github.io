@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+
+
+    
+        <meta name="twitter:card" content="summary"/>
+    
+
+
+
+<meta name="twitter:title" content="Why You Should do all Your Testing in Prod"/>
+<meta name="twitter:description" content="Testing in prod? What if you could load your application in production while overriding pieces of functionality to load directly from your local machine? This can be done by building your app in a way in which functionality is resolved and loaded dynamically at runtime. Doing so allows you to test and develop in production by intercepting that runtime resolution.
+Run-time resolution When building a single-page application, usually JavaScript code is statically built into one or more bundles."/>
+
+
+
+  	<meta property="og:title" content=" Why You Should do all Your Testing in Prod &middot;  Canopy Tech" />
+  	<meta property="og:site_name" content="Canopy Tech" />
+  	<meta property="og:url" content="https://canopytax.github.io/post/testing-in-production/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2017-08-15T08:05:03-07:00" />
+
+    
+    
+
+    <title>
+       Why You Should do all Your Testing in Prod &middot;  Canopy Tech
+    </title>
+
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="icon" href="https://canopytax.github.io/images/favicon-16.png" sizes="16x16">
+		<link rel="icon" href="https://canopytax.github.io/images/favicon-32.png" sizes="32x32">
+		<link rel="icon" href="https://canopytax.github.io/images/favicon-48.png" sizes="48x48">
+		<link rel="icon" href="https://canopytax.github.io/images/favicon-64.png" sizes="64x64">
+		<link rel="icon" href="https://canopytax.github.io/images/favicon-128.png" sizes="128x128">
+	  <link rel="apple-touch-icon" href="https://canopytax.github.io/images/favicon-128.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://canopytax.github.io/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://canopytax.github.io/css/nav.css" />
+		<link rel='stylesheet' id='font-asap-css'  href='https://fonts.googleapis.com/css?family=Asap%3A400%2C400i%2C700%2C700i&#038;ver=1.0.0' type='text/css' media='all' />
+
+		
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-88594531-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+    
+      
+          <link href="https://canopytax.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Canopy Tech" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.17" />
+
+    <link rel="canonical" href="https://canopytax.github.io/post/testing-in-production/" />
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="https://canopytax.github.io/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="https://canopytax.github.io/index.xml">&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+<div style="width: 100%;">
+	<div class="headerWrapper">
+		<a class="headerImage" href="https://canopytax.github.io/">
+			<img src="https://canopytax.github.io/images/header--logo.svg"/>
+			<span>tech</span>
+		</a>
+	</div>
+</div>
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Why You Should do all Your Testing in Prod</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2017-08-15T08:05:03-07:00">
+            Aug 15, 2017
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<h3 id="testing-in-prod">Testing in prod?</h3>
+
+<p>What if you could load your application in production while overriding pieces of functionality to load directly from your local machine? This can be done by building your app in a way in which functionality is resolved and loaded dynamically at runtime. Doing so allows you to test and develop in production by intercepting that runtime resolution.</p>
+
+<h3 id="run-time-resolution">Run-time resolution</h3>
+
+<p>When building a single-page application, usually JavaScript code is statically built into one or more bundles. Those bundles are added to page through traditional <code>script</code> tags:</p>
+
+<script type="text/javascript" src="http://gist.github.com/7b7e6d1ce415ca1833aac7985923be4b.js"></script>
+
+
+<p>Resolving code at run-time introduces an extra dynamic and imperative step. This can be done with libraries like RequireJS and SystemJS, or if your browser supports it, native ECMAScript modules:</p>
+
+<script type="text/javascript" src="http://gist.github.com/da7355fd4a187655bb1eef31f5ded83b.js"></script>
+
+
+<p>Because the code is loaded dynamically, you can intercept the loading mechanism and change the location of your bundle. This allows you to set a <code>localStorage</code> flag and load the application in production while dynamically changing the bundle to load from my your local machine:</p>
+
+<script type="text/javascript" src="http://gist.github.com/8309fd0ee938a6b6bb9d845f41c0bffd.js"></script>
+
+
+<h3 id="micro-services">Micro-services</h3>
+
+<p>While you could use the above examples and define your application with one large bundle, it might be worth considering breaking up your application into microservices, or domain specific bundles. This allows you to define natural split points in your application. Instead of loading all code up front, bundles are loaded on demand as the user navigates throughout the application. This also allows you to override smaller portions of code while keeping the majority of the code based upon production.</p>
+
+<h3 id="what-about-performance">What about performance?</h3>
+
+<p>Dynamically loading modules definitely has an impact on application performance. Instead of immediately loading a static script tag, the browser first has to parse and execute your JavaScript code before loading the application. This can be avoided by server rendering your script tags and utilizing a <code>cookie</code> to determine the override locations instead of <code>localStorage</code>.</p>
+
+<h3 id="learn-more">Learn more</h3>
+
+<ol>
+<li><a href="https://github.com/CanopyTax/sofe">Sofe</a> - At CanopyTax, we built a plugin on top of SystemJS that makes dynamically loading and overriding bundles easy.</li>
+<li>We have over a dozen front-end services, some of which utilize Angular.js and others with React. We load and run both Angular and React in the same single-page application through a JavaScript metaframework called <a href="https://github.com/CanopyTax/single-spa">single-spa</a>.</li>
+<li><a href="https://medium.com/@tomsoderlund/micro-frontends-a-microservice-approach-to-front-end-web-development-f325ebdadc16">Micro frontends—a microservice approach to front-end web development</a></li>
+<li><a href="https://gist.github.com/Rich-Harris/41e8ccc755ea232a5e7b88dee118bcf5">Why imperative imports are slower than declarative imports</a></li>
+</ol>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="https://canopytax.github.io/">Bret Little</a></h4>
+  
+  <p>Canopy software engineer specializing in front-end web technologies.</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Lehi, UT</span>
+    <span class="author-link icon-link"><a href="https://blittle.keybase.pub/">https://blittle.keybase.pub/</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Why%20You%20Should%20do%20all%20Your%20Testing%20in%20Prod&nbsp;-&nbsp;Canopy%20Tech&amp;url=https%3a%2f%2fcanopytax.github.io%2fpost%2ftesting-in-production%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcanopytax.github.io%2fpost%2ftesting-in-production%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fcanopytax.github.io%2fpost%2ftesting-in-production%2f&amp;description=Why%20You%20Should%20do%20all%20Your%20Testing%20in%20Prod"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fcanopytax.github.io%2fpost%2ftesting-in-production%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'canopy-tech';
+  var disqus_url = 'https:\/\/canopytax.github.io\/post\/testing-in-production\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">Canopy Tech</a> All rights reserved - 2016</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://canopytax.github.io/js/jquery.js"></script>
+    <script type="text/javascript" src="https://canopytax.github.io/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://canopytax.github.io/js/index.js"></script>
+    
+</body>
+</html>
+
