@@ -18,7 +18,7 @@ Resolving code at run-time introduces an extra dynamic and imperative step. This
 
 {{< gist da7355fd4a187655bb1eef31f5ded83b >}}
 
-Because the code is loaded dynamically, you can intercept the loading mechanism and change the location of your bundle. This allows you to set a `localStorage` flag and load the application in production while dynamically changing the bundle to load from my your local machine:
+Because the code is loaded dynamically, you can intercept the loading mechanism and change the location of your bundle. This allows you to set a `localStorage` flag and load the application in production while dynamically changing the bundle to load from your local machine:
 
 {{< gist 8309fd0ee938a6b6bb9d845f41c0bffd >}}
 
