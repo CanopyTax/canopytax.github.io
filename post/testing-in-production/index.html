@@ -175,7 +175,7 @@ ga('send', 'pageview');
 
 <h3 id="what-about-performance">What about performance?</h3>
 
-<p>Dynamically loading modules definitely has an impact on application performance. Instead of immediately loading a static script tag, the browser first has to parse and execute your JavaScript code before loading the application. This can be avoided by server rendering your script tags and utilizing a <code>cookie</code> to determine the override locations instead of <code>localStorage</code>.</p>
+<p>Dynamically loading modules definitely has an impact on application performance. Instead of immediately loading a static script tag, the browser first has to parse and execute an extra layer of JavaScript code before loading your application. This can be avoided by server rendering your script tags and utilizing a <code>cookie</code> to determine the override locations instead of <code>localStorage</code>.</p>
 
 <h3 id="learn-more">Learn more</h3>
 

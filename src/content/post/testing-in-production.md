@@ -26,7 +26,7 @@ Because the code is loaded dynamically, you can intercept the loading mechanism 
 While you could use the above examples and define your application with one large bundle, it might be worth considering breaking up your application into microservices, or domain specific bundles. This allows you to define natural split points in your application. Instead of loading all code up front, bundles are loaded on demand as the user navigates throughout the application. This also allows you to override smaller portions of code while keeping the majority of the code based upon production.
 
 ### What about performance?
-Dynamically loading modules definitely has an impact on application performance. Instead of immediately loading a static script tag, the browser first has to parse and execute your JavaScript code before loading the application. This can be avoided by server rendering your script tags and utilizing a `cookie` to determine the override locations instead of `localStorage`.
+Dynamically loading modules definitely has an impact on application performance. Instead of immediately loading a static script tag, the browser first has to parse and execute an extra layer of JavaScript code before loading your application. This can be avoided by server rendering your script tags and utilizing a `cookie` to determine the override locations instead of `localStorage`.
 
 ### Learn more
 1. [Sofe](https://github.com/CanopyTax/sofe) - At CanopyTax, we built a plugin on top of SystemJS that makes dynamically loading and overriding bundles easy.
