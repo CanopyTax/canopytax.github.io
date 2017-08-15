@@ -7,10 +7,10 @@ date = "2017-08-15T08:05:03-07:00"
 +++
 
 ### Testing in prod?
-What if you could load your application in production while overriding pieces of functionality to load directly from your local machine? This can be done by building your app in a way in which functionality is resolved and loaded dynamically at runtime. Doing so allows you to test and develop in production by intercepting that runtime resolution.
+As developers we typically run a local version of our application with fake data to preview the changes we're making as we develop before we deploy them to production. But what if you could run your app in production with pieces of it being loaded from your local machine? Then you could develop against real data and production. Also, you wouldn’t need to run the entire back-end stack while making only front-end changes. This can be done by building your app in a way in which functionality is resolved and loaded dynamically at runtime. Doing so allows you to test and develop in production by intercepting that runtime resolution.
 
 ### Run-time resolution
-When building a single-page application, usually JavaScript code is statically built into one or more bundles. Those bundles are added to page through traditional `script` tags:
+When building a single-page application, usually JavaScript code is statically built into one or more bundles. Those bundles are added to the page through traditional `script` tags:
 
 {{< gist 7b7e6d1ce415ca1833aac7985923be4b >}}
 
@@ -18,7 +18,7 @@ Resolving code at run-time introduces an extra dynamic and imperative step. This
 
 {{< gist da7355fd4a187655bb1eef31f5ded83b >}}
 
-Because the code is loaded dynamically, you can intercept the loading mechanism and change the location of your bundle. This allows you to set a `localStorage` flag and load the application in production while dynamically changing the bundle to load from your local machine:
+Because the application is loaded dynamically, you can intercept the loading mechanism and change the location of your bundle. This allows you to set a `localStorage` flag and load the application in production while dynamically changing the bundle to load from your local machine:
 
 {{< gist 8309fd0ee938a6b6bb9d845f41c0bffd >}}
 

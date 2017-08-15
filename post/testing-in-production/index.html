@@ -15,8 +15,7 @@
 
 
 <meta name="twitter:title" content="Why You Should do all Your Testing in Prod"/>
-<meta name="twitter:description" content="Testing in prod? What if you could load your application in production while overriding pieces of functionality to load directly from your local machine? This can be done by building your app in a way in which functionality is resolved and loaded dynamically at runtime. Doing so allows you to test and develop in production by intercepting that runtime resolution.
-Run-time resolution When building a single-page application, usually JavaScript code is statically built into one or more bundles."/>
+<meta name="twitter:description" content="Testing in prod? As developers we typically run a local version of our application with fake data to preview the changes we&rsquo;re making as we develop before we deploy them to production. But what if you could run your app in production with pieces of it being loaded from your local machine? Then you could develop against real data and production. Also, you wouldn’t need to run the entire back-end stack while making only front-end changes."/>
 
 
 
@@ -147,11 +146,11 @@ ga('send', 'pageview');
 
 <h3 id="testing-in-prod">Testing in prod?</h3>
 
-<p>What if you could load your application in production while overriding pieces of functionality to load directly from your local machine? This can be done by building your app in a way in which functionality is resolved and loaded dynamically at runtime. Doing so allows you to test and develop in production by intercepting that runtime resolution.</p>
+<p>As developers we typically run a local version of our application with fake data to preview the changes we&rsquo;re making as we develop before we deploy them to production. But what if you could run your app in production with pieces of it being loaded from your local machine? Then you could develop against real data and production. Also, you wouldn’t need to run the entire back-end stack while making only front-end changes. This can be done by building your app in a way in which functionality is resolved and loaded dynamically at runtime. Doing so allows you to test and develop in production by intercepting that runtime resolution.</p>
 
 <h3 id="run-time-resolution">Run-time resolution</h3>
 
-<p>When building a single-page application, usually JavaScript code is statically built into one or more bundles. Those bundles are added to page through traditional <code>script</code> tags:</p>
+<p>When building a single-page application, usually JavaScript code is statically built into one or more bundles. Those bundles are added to the page through traditional <code>script</code> tags:</p>
 
 <script type="text/javascript" src="https://gist.github.com/7b7e6d1ce415ca1833aac7985923be4b.js"></script>
 <br />
@@ -163,7 +162,7 @@ ga('send', 'pageview');
 <br />
 
 
-<p>Because the code is loaded dynamically, you can intercept the loading mechanism and change the location of your bundle. This allows you to set a <code>localStorage</code> flag and load the application in production while dynamically changing the bundle to load from your local machine:</p>
+<p>Because the application is loaded dynamically, you can intercept the loading mechanism and change the location of your bundle. This allows you to set a <code>localStorage</code> flag and load the application in production while dynamically changing the bundle to load from your local machine:</p>
 
 <script type="text/javascript" src="https://gist.github.com/8309fd0ee938a6b6bb9d845f41c0bffd.js"></script>
 <br />
