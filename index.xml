@@ -7,8 +7,59 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2016</copyright>
-    <lastBuildDate>Fri, 23 Jun 2017 03:03:15 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 15 Aug 2017 08:05:03 -0700</lastBuildDate>
     <atom:link href="https://canopytax.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Why You Should do all Your Testing in Prod</title>
+      <link>https://canopytax.github.io/post/testing-in-production/</link>
+      <pubDate>Tue, 15 Aug 2017 08:05:03 -0700</pubDate>
+      
+      <guid>https://canopytax.github.io/post/testing-in-production/</guid>
+      <description>
+
+&lt;h3 id=&#34;testing-in-prod&#34;&gt;Testing in prod?&lt;/h3&gt;
+
+&lt;p&gt;As developers we typically run a local version of our application with fake data to preview the changes we&amp;rsquo;re making as we develop before we deploy them to production. But what if you could run your app in production with pieces of it being loaded from your local machine? Then you could develop against real data and production. Also, you wouldn’t need to run the entire back-end stack while making only front-end changes. This can be done by building your app in a way in which functionality is resolved and loaded dynamically at run-time. Doing so allows you to test and develop in production by intercepting that run-time resolution.&lt;/p&gt;
+
+&lt;h3 id=&#34;run-time-resolution&#34;&gt;Run-time resolution&lt;/h3&gt;
+
+&lt;p&gt;When building a single-page application, usually JavaScript code is statically built into one or more bundles. Those bundles are added to the page through traditional &lt;code&gt;script&lt;/code&gt; tags:&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://gist.github.com/7b7e6d1ce415ca1833aac7985923be4b.js&#34;&gt;&lt;/script&gt;
+&lt;br /&gt;
+
+
+&lt;p&gt;Resolving code at run-time introduces an extra dynamic and imperative step. This can be done with libraries like RequireJS and SystemJS, or if your browser supports it, native ECMAScript modules:&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://gist.github.com/da7355fd4a187655bb1eef31f5ded83b.js&#34;&gt;&lt;/script&gt;
+&lt;br /&gt;
+
+
+&lt;p&gt;Because the application is loaded dynamically, you can intercept the loading mechanism and change the location of your bundle. This allows you to set a &lt;code&gt;localStorage&lt;/code&gt; flag and load the application in production while dynamically changing the bundle to load from your local machine:&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://gist.github.com/8309fd0ee938a6b6bb9d845f41c0bffd.js&#34;&gt;&lt;/script&gt;
+&lt;br /&gt;
+
+
+&lt;h3 id=&#34;micro-services&#34;&gt;Micro-services&lt;/h3&gt;
+
+&lt;p&gt;While you could use the above examples and define your application with one large bundle, it might be worth considering breaking up your application into microservices, or domain specific bundles. This allows you to define natural split points in your application. Instead of loading all code up front, bundles are loaded on demand as the user navigates throughout the application. This also allows you to override smaller portions of code while keeping the majority of the code based upon production.&lt;/p&gt;
+
+&lt;h3 id=&#34;what-about-performance&#34;&gt;What about performance?&lt;/h3&gt;
+
+&lt;p&gt;Dynamically loading modules definitely has an impact on application performance. Instead of immediately loading a static script tag, the browser first has to parse and execute an extra layer of JavaScript code before loading your application. This can be avoided by server rendering your script tags and utilizing a &lt;code&gt;cookie&lt;/code&gt; to determine the override locations instead of &lt;code&gt;localStorage&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;learn-more&#34;&gt;Learn more&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/CanopyTax/sofe&#34;&gt;Sofe&lt;/a&gt; - At CanopyTax, we built a plugin on top of SystemJS that makes dynamically loading and overriding bundles easy.&lt;/li&gt;
+&lt;li&gt;We have over a dozen front-end services, some of which utilize Angular.js and others with React. We load and run both Angular and React in the same single-page application through a JavaScript metaframework called &lt;a href=&#34;https://github.com/CanopyTax/single-spa&#34;&gt;single-spa&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@tomsoderlund/micro-frontends-a-microservice-approach-to-front-end-web-development-f325ebdadc16&#34;&gt;Micro frontends—a microservice approach to front-end web development&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/Rich-Harris/41e8ccc755ea232a5e7b88dee118bcf5&#34;&gt;Why imperative imports are slower than declarative imports&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>Thoughts on Microservices</title>

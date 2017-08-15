@@ -1,7 +1,7 @@
 +++
 author = "bret"
 title = "Why You Should do all Your Testing in Prod"
-draft = true
+draft = false
 date = "2017-08-15T08:05:03-07:00"
 
 +++
