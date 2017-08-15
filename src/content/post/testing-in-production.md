@@ -7,7 +7,7 @@ date = "2017-08-15T08:05:03-07:00"
 +++
 
 ### Testing in prod?
-As developers we typically run a local version of our application with fake data to preview the changes we're making as we develop before we deploy them to production. But what if you could run your app in production with pieces of it being loaded from your local machine? Then you could develop against real data and production. Also, you wouldn’t need to run the entire back-end stack while making only front-end changes. This can be done by building your app in a way in which functionality is resolved and loaded dynamically at runtime. Doing so allows you to test and develop in production by intercepting that runtime resolution.
+As developers we typically run a local version of our application with fake data to preview the changes we're making as we develop before we deploy them to production. But what if you could run your app in production with pieces of it being loaded from your local machine? Then you could develop against real data and production. Also, you wouldn’t need to run the entire back-end stack while making only front-end changes. This can be done by building your app in a way in which functionality is resolved and loaded dynamically at run-time. Doing so allows you to test and develop in production by intercepting that run-time resolution.
 
 ### Run-time resolution
 When building a single-page application, usually JavaScript code is statically built into one or more bundles. Those bundles are added to the page through traditional `script` tags:
