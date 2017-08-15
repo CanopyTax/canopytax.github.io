@@ -226,6 +226,7 @@ help foster a culture of autonomy and fast-failing. As Canopy is growing really 
 &lt;p&gt;Since Webpack is probably the more common use case, my code examples from here on will assume that you’re using Webpack 2. The equivalent Webpack 1 or JSPM code has all the same concepts and only some minor code differences.&lt;/p&gt;
 
 &lt;p&gt;&lt;script type=&#34;text/javascript&#34; src=&#34;https://gist.github.com/fa2428d1df615387aa763d8b0e29e6c1.js&#34;&gt;&lt;/script&gt;
+&lt;br /&gt;
 
 &lt;br /&gt;&lt;/p&gt;
 
@@ -240,6 +241,7 @@ help foster a culture of autonomy and fast-failing. As Canopy is growing really 
 &lt;p&gt;To do this, first &lt;code&gt;npm install single-spa&lt;/code&gt; and then call the &lt;a href=&#34;https://github.com/CanopyTax/single-spa/blob/master/docs/root-application.md#declaring-child-applications&#34;&gt;declareChildApplication&lt;/a&gt; function:&lt;/p&gt;
 
 &lt;script type=&#34;text/javascript&#34; src=&#34;https://gist.github.com/d72c28eb395665849b5fd311f33272f2.js&#34;&gt;&lt;/script&gt;
+&lt;br /&gt;
 
 
 &lt;p&gt;Because single-spa is &lt;em&gt;so very&lt;/em&gt; cool, we’ve created an app called “cool-app” that will be lazy loaded and mounted to the DOM whenever the url hash starts with &lt;code&gt;#/cool&lt;/code&gt;.&lt;/p&gt;
@@ -273,6 +275,7 @@ help foster a culture of autonomy and fast-failing. As Canopy is growing really 
 &lt;p&gt;Here is a simple example:&lt;/p&gt;
 
 &lt;script type=&#34;text/javascript&#34; src=&#34;https://gist.github.com/d96a25991b1e53437c14437fadd32af0.js&#34;&gt;&lt;/script&gt;
+&lt;br /&gt;
 
 
 &lt;p&gt;At this point, you might be seeing the &lt;code&gt;document.getElementById&lt;/code&gt; and &lt;code&gt;innerHTML =&lt;/code&gt; and worry that you’ve been duped — maybe single-spa is really just a poor excuse for a ui component framework.&lt;/p&gt;
@@ -290,6 +293,7 @@ help foster a culture of autonomy and fast-failing. As Canopy is growing really 
 &lt;p&gt;So going back to our previous example, we could choose to write our “cool.app.js” as an Angular 1 app, and choose something else for future apps:&lt;/p&gt;
 
 &lt;script type=&#34;text/javascript&#34; src=&#34;https://gist.github.com/d95775208c12b648ebc0e893258ec5be.js&#34;&gt;&lt;/script&gt;
+&lt;br /&gt;
 
 
 &lt;p&gt;In this example, we use a helper library called &lt;code&gt;single-spa-angular1&lt;/code&gt; which abstracts away the specifics of initializing Angular 1 apps. This blogpost doesn’t show you the &lt;code&gt;app.module.js&lt;/code&gt; or &lt;code&gt;routes.js&lt;/code&gt; files, but you can see an example implementation &lt;a href=&#34;https://github.com/CanopyTax/single-spa-examples/tree/master/src/angular1&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -632,6 +636,7 @@ within today’s browsers, sofe relies upon
 &lt;p&gt;You can load a sofe service either with static or asynchronous imports:&lt;/p&gt;
 
 &lt;script type=&#34;text/javascript&#34; src=&#34;https://gist.github.com/fb784992748f7d285f35bd26baa8a308.js&#34;&gt;&lt;/script&gt;
+&lt;br /&gt;
 
 
 &lt;p&gt;The real power behind sofe is that services are resolved at run-time, making

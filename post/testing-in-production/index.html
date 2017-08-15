@@ -154,16 +154,19 @@ ga('send', 'pageview');
 <p>When building a single-page application, usually JavaScript code is statically built into one or more bundles. Those bundles are added to page through traditional <code>script</code> tags:</p>
 
 <script type="text/javascript" src="https://gist.github.com/7b7e6d1ce415ca1833aac7985923be4b.js"></script>
+<br />
 
 
 <p>Resolving code at run-time introduces an extra dynamic and imperative step. This can be done with libraries like RequireJS and SystemJS, or if your browser supports it, native ECMAScript modules:</p>
 
 <script type="text/javascript" src="https://gist.github.com/da7355fd4a187655bb1eef31f5ded83b.js"></script>
+<br />
 
 
 <p>Because the code is loaded dynamically, you can intercept the loading mechanism and change the location of your bundle. This allows you to set a <code>localStorage</code> flag and load the application in production while dynamically changing the bundle to load from my your local machine:</p>
 
 <script type="text/javascript" src="https://gist.github.com/8309fd0ee938a6b6bb9d845f41c0bffd.js"></script>
+<br />
 
 
 <h3 id="micro-services">Micro-services</h3>
